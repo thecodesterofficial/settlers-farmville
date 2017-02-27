@@ -1,0 +1,47 @@
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+
+public class KatanServerManager {
+	
+	final private ServerSocket m_serverSocket;
+    final public static int MAX_CLIENTS = 4;
+    final private SubServer[] connections = new SubServer[ MAX_CLIENTS ];
+
+    public KatanServerManager( int port ) throws IOException {
+         this.m_serverSocket = new ServerSocket( port );
+         start();
+    }
+
+    @Override
+    public void run() {
+        while ( !this.interrupted() ) {
+             //wait for clients
+             Socket connection = this.m_serverSocket.accept();
+             assignConnectionToSubServer( connection );
+        }
+    }
+
+    public void assignConnectionToSubServer( Socket connection ) {
+         for ( int i = 0 ; i < MAX_CLIENTS ; i++ ) {
+
+             //find an unassigned subserver (waiter)
+             if ( this.m_clientConnections[ i ] == null ) {
+                  this.m_clientConnections[ i ] = new SubServer( connection , i );
+                  break;
+             }
+         }
+    }
+	public static void main(String[] args) {
+		int port = 9534;
+		if(args.length == 1)
+		{
+			port = Integer.parseInt(args[0]);
+		}
+		KatanServerManager server = new KatanServerManager(port);
+	}
+
+}

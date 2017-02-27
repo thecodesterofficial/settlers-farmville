@@ -1,0 +1,4 @@
+
+public class KatanServer extends Thread {
+	private String username;
+}

@@ -1,0 +1,11 @@
+
+public class Main {
+    private static void Start(int port)
+    {
+    	
+    }
+	public static void main(String[] args) {
+		Main.Start();
+	}
+
+}

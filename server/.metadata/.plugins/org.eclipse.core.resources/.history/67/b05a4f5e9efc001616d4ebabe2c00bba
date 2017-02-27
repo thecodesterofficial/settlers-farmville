@@ -1,0 +1,16 @@
+
+public class Main {
+    private static void Start(int port)
+    {
+    	
+    }
+	public static void main(String[] args) {
+		if(args.length > 1)
+		{
+			
+		}
+		
+		Main.Start();
+	}
+
+}

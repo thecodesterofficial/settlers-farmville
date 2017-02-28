@@ -1,13 +1,18 @@
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class KatanServer extends Thread {
 	private String username;
 	private int id;
 	private Socket connection;
-	public KatanServer( Socket connection , int id ) {
+	PrintWriter out;
+	public KatanServer( Socket connection , int id ) throws IOException {
         this.id = id;
         this.connection = connection;
+        
+        out = new PrintWriter(connection.getOutputStream(), true);
+        out.println("identity Mongoose");
         start();
     }
 
@@ -27,6 +32,7 @@ public class KatanServer extends Thread {
     public void close() {
         try {
              this.connection.close();
+             
         } catch ( IOException e ) {
              
         }

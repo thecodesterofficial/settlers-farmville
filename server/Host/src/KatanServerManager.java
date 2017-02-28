@@ -26,10 +26,17 @@ public class KatanServerManager {
     }
 
     public void assignConnection( Socket connection ) {
+         
     	 System.out.println("Assigning a connection...");
          for ( int i = 0 ; i < MAX_CLIENTS ; i++ ) {            
              if ( this.connections[ i ] == null ) {
-                  this.connections[ i ] = new KatanServer( connection , i );
+            	  try
+            	  {
+            		  this.connections[ i ] = new KatanServer( connection , i );
+            	  } catch(IOException e)
+            	  {
+            		  System.out.println(e.getMessage());
+            	  }
                   break;
              }
          }

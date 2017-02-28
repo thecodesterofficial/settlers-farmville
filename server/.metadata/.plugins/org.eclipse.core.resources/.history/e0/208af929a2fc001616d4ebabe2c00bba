@@ -1,0 +1,35 @@
+import java.net.Socket;
+
+public class KatanServer extends Thread {
+	private String username;
+	public KatanServer( Socket connection , int id ) {
+        this.id = id;
+        this.connection = connection;
+        start();
+    }
+
+    @Override
+    public void run() {
+         while( !this.interrupted() ) {
+             //process a client request
+             //this is for you to implement
+         }
+    }
+
+    //as an example, if you read String messages from your client,
+    //just call this method from the run() method to process the client request
+    public void process( String message ) {
+
+    }
+
+    /**
+     * terminates the connection with this client (i.e. stops serving him)
+     */
+    public void close() {
+        try {
+             this.m_connection.close();
+        } catch ( IOException e ) {
+             //ignore
+        }
+    }
+}

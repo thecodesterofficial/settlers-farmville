@@ -1,0 +1,14 @@
+
+public class Client {
+    public static int port = 9534;
+	public static void main(String[] args) {
+	
+		try {
+			Socket socket = new Socket(serverAddress, 9898);
+	        BufferedReader in = new BufferedReader(
+	                new InputStreamReader(socket.getInputStream()));
+	        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+		}
+	}
+
+}

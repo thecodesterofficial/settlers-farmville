@@ -28,7 +28,7 @@ public class KatanServerManager {
     {
     	for ( int i = 0 ; i < MAX_CLIENTS && this.connections[ i ] != null; i++ ) {    
     		System.out.println("made it to a connection");
-            connections[i].Send(message);
+            connections[i].out.println(message);
         }
     }
     public void assignConnection( Socket connection ) {

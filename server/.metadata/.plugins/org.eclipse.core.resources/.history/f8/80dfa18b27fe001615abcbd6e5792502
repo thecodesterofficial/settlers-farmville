@@ -58,10 +58,8 @@ public class KatanServer extends Thread {
     	
     	if(message.equals("dice"))
     	{
-    		rollDice();
-    		
     		System.out.println("Should be rolling");
-    		
+    		rollDice();
     	}
     	
     }

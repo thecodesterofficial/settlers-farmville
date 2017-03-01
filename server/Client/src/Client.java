@@ -13,8 +13,10 @@ public class Client {
 	        BufferedReader in = new BufferedReader(
 	                new InputStreamReader(socket.getInputStream()));
 	        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+	        out.println("roll dice");
 	        String response = in.readLine();
 	        System.out.println(response);
+	        System.out.println("Exit");
 		} catch(IOException e)
 		{
 			System.out.println(e.getMessage());

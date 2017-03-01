@@ -19,7 +19,7 @@ public class KatanServerManager {
   
     public void Start() throws IOException {
         while ( true ) {
-             System.out.println("Waiting for a connection...");
+             System.out.println("Waiting for a connection.");
              Socket connection = socket.accept();
              assignConnection( connection );
         }

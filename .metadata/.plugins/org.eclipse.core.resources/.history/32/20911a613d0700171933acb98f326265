@@ -1,0 +1,18 @@
+
+public class GameStateManager {
+	enum States {
+		Lobby
+		
+	}
+	
+	private static GameStateManager state;
+	
+	public static GameStateManager instance() 
+	{
+		if(state == null)
+		{
+			state = new GameStateManager();
+		}
+		return state;
+	}
+}

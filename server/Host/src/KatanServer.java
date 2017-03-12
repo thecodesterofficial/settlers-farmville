@@ -28,7 +28,13 @@ public class KatanServer extends Thread {
         		 if(in.ready())
         		 {
         			 String data = in.readLine();
-        			 process(data);
+        			 System.out.println("Read in message: " + data);
+        			 String[] split = data.split(" ");
+        			 if(split.length > 0)
+        			 {
+        				 process(split);
+        			 }
+        			 
         		 }
         		 
         		
@@ -53,15 +59,27 @@ public class KatanServer extends Thread {
     	out.println(message);
     }
     
-    public void process( String message ) {
-    	// parse strings and respond appropriately
-    	
-    	if(message.equals("dice"))
+    
+    private void handleConnect(String[] message) 
+    {
+    	if(message.length == 2)
     	{
-    		rollDice();
-    		
-    		System.out.println("Should be rolling");
-    		
+    		this.username = message[1];
+    		System.out.println("Identified as " + this.username);
+    		out.println("connect good");
+    	}
+    	else
+    	{
+    		out.println("connect bad");
+    	}
+    
+    }
+    
+    public void process( String[] message ) {
+    	
+    	if(message[0].equals("connect"))
+    	{
+    		handleConnect(message);
     	}
     	
     }

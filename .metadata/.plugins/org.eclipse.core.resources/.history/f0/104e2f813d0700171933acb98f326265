@@ -1,0 +1,22 @@
+
+public class GameStateManager {
+	enum States {
+		Lobby
+		
+	}
+	
+	private static GameStateManager manager;
+	
+	public static GameStateManager instance() 
+	{
+		if(manager == null)
+		{
+			state = new GameStateManager();
+		}
+		return state;
+	}
+	private GameStateManager()
+	{
+		this.stat
+	}
+}

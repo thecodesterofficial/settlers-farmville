@@ -17,9 +17,15 @@ public class Client {
 	        String response = in.readLine();
 	        if(response.equals("connect good"))
 	        {
-	        	System.out.println("Conection Established!");
+	        	System.out.println("Connection Established!");
+	        	out.println("game start");
+	        	System.out.println(in.readLine());
+	        	System.out.println(in.readLine());
 	        }
-	        
+	        else
+	        {
+	        	
+	        }
 	        
 		} catch(IOException e)
 		{

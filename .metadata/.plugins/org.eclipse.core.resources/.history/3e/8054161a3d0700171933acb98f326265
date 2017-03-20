@@ -1,0 +1,12 @@
+
+public class GameStateManager {
+	enum States {
+		Lobby,
+		
+	}
+	
+	public static GameStateManager instance() 
+	{
+		
+	}
+}

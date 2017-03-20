@@ -31,16 +31,13 @@ public class CatanServerManager {
             connections[i].Send(message);
         }
     }
-    public void  NewPlayer(String name)
-    {
-    	this.Dispatch("player new " + name);
-    }
+    
     public void StartGame()
     {
     	Dispatch("game start");
     
     	Dispatch("player turn " + this.turn);
-    	
+    	// Other stuff to happen at start of game
     }
     
     public void assignConnection( Socket connection ) {

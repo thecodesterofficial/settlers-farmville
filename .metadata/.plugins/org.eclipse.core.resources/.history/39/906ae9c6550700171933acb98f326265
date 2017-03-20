@@ -33,7 +33,8 @@ public class CatanServerManager {
     }
     public void  NewPlayer(String name)
     {
-    	this.Dispatch("player new " + name);
+    	this.Dispatch("player new ");
+    }
     }
     public void StartGame()
     {

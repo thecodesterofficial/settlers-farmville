@@ -31,10 +31,7 @@ public class CatanServerManager {
             connections[i].Send(message);
         }
     }
-    public void  NewPlayer(String name)
-    {
-    	this.Dispatch("player new " + name);
-    }
+    
     public void StartGame()
     {
     	Dispatch("game start");

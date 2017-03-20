@@ -67,7 +67,6 @@ public class CatanServer extends Thread {
     		this.username = message[1];
     		System.out.println("Identified as " + this.username);
     		out.println("connect good");
-    		manager.NewPlayer(this.username);
     	}
     	else
     	{

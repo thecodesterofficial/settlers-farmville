@@ -13,8 +13,20 @@ public class Client {
 	        BufferedReader in = new BufferedReader(
 	                new InputStreamReader(socket.getInputStream()));
 	        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+	        out.println("connect techboysquared");
 	        String response = in.readLine();
-	        System.out.println(response);
+	        if(response.equals("connect good"))
+	        {
+	        	System.out.println("Connection Established!");
+	        	out.println("game start");
+	        	System.out.println(in.readLine());
+	        	System.out.println(in.readLine());
+	        }
+	        else
+	        {
+	        	
+	        }
+	        
 		} catch(IOException e)
 		{
 			System.out.println(e.getMessage());

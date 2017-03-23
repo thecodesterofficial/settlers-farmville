@@ -267,6 +267,7 @@ public class GameBoard {
 			{
 				adj.add(FindJointAbove(x, y));
 			}
+			
 		}
 		return adj;
 	}

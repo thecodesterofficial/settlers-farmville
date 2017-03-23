@@ -156,21 +156,6 @@ public class TestGameBoard extends TestCase {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	public void testFindAdjacentJointsEdge3()
-	{
-		try 
-		{
-			List<Joint> adj = board.FindAdjacentJoints(3, 5);
-		
-			assertTrue(adj.size() == 2);
-		}
-		catch(Exception e)
-		{
-			System.out.println("Problem finding adjacent joints on edge:");
-			System.out.println(e.getMessage());
-		}
-	}
 	public void testFindAjacentJointsFull()
 	{
 		try

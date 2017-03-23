@@ -133,6 +133,10 @@ public class TestGameBoard extends TestCase {
 		try
 		{
 			List<Joint> adj = board.FindAdjacentJoints(3,  0);
+			for(int i = 0; i < adj.size(); i++)
+			{
+				
+			}
 			assertTrue(adj.size() == 2);
 			
 		}
@@ -149,21 +153,6 @@ public class TestGameBoard extends TestCase {
 			List<Joint> adj = board.FindAdjacentJoints(7, 1);
 		
 			assertTrue(adj.size() == 3);
-		}
-		catch(Exception e)
-		{
-			System.out.println("Problem finding adjacent joints on edge:");
-			System.out.println(e.getMessage());
-		}
-	}
-	
-	public void testFindAdjacentJointsEdge3()
-	{
-		try 
-		{
-			List<Joint> adj = board.FindAdjacentJoints(3, 5);
-		
-			assertTrue(adj.size() == 2);
 		}
 		catch(Exception e)
 		{

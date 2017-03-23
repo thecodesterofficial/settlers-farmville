@@ -265,8 +265,9 @@ public class GameBoard {
 		{
 			if(y !=  5 || x % 2 == 0)
 			{
-				adj.add(FindJointAbove(x, y));
+				
 			}
+			adj.add(FindJointAbove(x, y));
 		}
 		return adj;
 	}

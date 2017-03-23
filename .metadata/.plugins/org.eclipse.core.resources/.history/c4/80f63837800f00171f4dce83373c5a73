@@ -243,30 +243,43 @@ public class GameBoard {
 		List<Joint> adj = new ArrayList<Joint>();
 		Joint left = FindJointLeft(x, y);
 		Joint right = FindJointRight(x, y);
-		if(right != null)
+		if(left == null && right != null)
 		{
 			adj.add(right);
 		}
-		if(left != null)
+		else if(right == null && left != null)
 		{
 			adj.add(left);
 		}
 		
-		if((x % 2 != 0 && y % 2 == 0) || (x % 2 == 0 && y % 2 != 0))
+		else
 		{
-			if(y != 0 || x % 2 == 0)
+			if((x % 2 != 0 && y % 2 == 0) || (x % 2 == 0 && y % 2 != 0))
 			{
 				adj.add(FindJointBelow(x, y));
 			}
-			
-			
-		}
-		else if((x % 2 != 0 && y % 2 != 0) || (x % 2 == 0 && y % 2 == 0))
-		{
-			if(y !=  5 || x % 2 == 0)
+			else if((x % 2 != 0 && y % 2 != 0))
 			{
-				adj.add(FindJointAbove(x, y));
+				adj.add(FindJointsBelow(x, y));
 			}
+			
+			/*if((x % 2 != 0 && y % 2 == 0)
+				|| (x % 2 == 0 && y % 2 != 0))
+			{
+				if((x == 0 && x % 0 == 0) || x != 0)
+				{
+					adj.add(FindJointBelow(x, y));
+				}
+				
+			}
+			else
+			{	
+				if((x == 5 && x % 0 == 0) || x != 5)
+				{
+					adj.add(FindJointAbove(x, y));
+				}
+				
+			}*/
 		}
 		return adj;
 	}

@@ -157,13 +157,13 @@ public class TestGameBoard extends TestCase {
 		}
 	}
 	
-	public void testFindAdjacentJointsEdge3()
+	public void testFindAdjacentJointsEdge2()
 	{
 		try 
 		{
-			List<Joint> adj = board.FindAdjacentJoints(3, 5);
+			List<Joint> adj = board.FindAdjacentJoints(7, 1);
 		
-			assertTrue(adj.size() == 2);
+			assertTrue(adj.size() == 3);
 		}
 		catch(Exception e)
 		{

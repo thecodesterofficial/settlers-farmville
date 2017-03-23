@@ -254,19 +254,15 @@ public class GameBoard {
 		
 		if((x % 2 != 0 && y % 2 == 0) || (x % 2 == 0 && y % 2 != 0))
 		{
-			if(y != 0 || x % 2 == 0)
+			if(!(x == 0 && x % 2 != 0))
 			{
 				adj.add(FindJointBelow(x, y));
 			}
 			
-			
 		}
 		else if((x % 2 != 0 && y % 2 != 0) || (x % 2 == 0 && y % 2 == 0))
 		{
-			if(y !=  5 || x % 2 == 0)
-			{
-				adj.add(FindJointAbove(x, y));
-			}
+			adj.add(FindJointAbove(x, y));
 		}
 		return adj;
 	}

@@ -293,12 +293,12 @@ public class GameBoard {
 		}
 		else if(y == 2)
 		{
-			adj.add(FindJoint(x + 2, y));
-			adj.add(FindJoint(x + 3, y));
-			adj.add(FindJoint(x + 4, y));
-			adj.add(FindJoint(x + 2, y + 1));
-			adj.add(FindJoint(x + 3, y + 1));
-			adj.add(FindJoint(x + 4, y + 1));
+			adj.add(FindJoint(x * 2, y));
+			adj.add(FindJoint(x * 2, y));
+			adj.add(FindJoint(x * 2, y));
+			adj.add(FindJoint(x * 2, y + 1));
+			adj.add(FindJoint(x * 2, y + 1));
+			adj.add(FindJoint(x * 2, y + 1));
 		}
 		return adj;
 	}

@@ -249,6 +249,14 @@ public class TestGameBoard extends TestCase {
 		assertTrue(adj.contains(new Joint(3, 5)));
 		assertTrue(adj.contains(new Joint(4, 5)));
 	}
-
+	public void testFindHexEdgeFromJointsRow3()
+	{
+		List<Joint> adj = board.FindJointsFromHex(4, 2);
+		assertTrue(adj.size() == 6);
+		assertFalse(adj.contains(null));
+		assertTrue(adj.contains(new Joint(8, 2)));
+		assertTrue(adj.contains(new Joint(9, 2)));
+		assertTrue(adj.contains(new Joint(10, 2)));
+	}
 
 }

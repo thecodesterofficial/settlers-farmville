@@ -38,4 +38,15 @@ public class Hex {
 	{
 		return y;
 	}
+	@Override
+	public boolean equals(Object other)
+	{
+		if(other instanceof Hex)
+		{
+			Hex hex = (Hex)other;
+			return this.x == hex.x && this.y == hex.y;
+		}
+		return false;
+		
+	}
 }

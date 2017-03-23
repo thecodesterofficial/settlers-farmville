@@ -15,4 +15,15 @@ public class Joint {
 	{
 		return y;
 	}
+	@Override
+	public boolean equals(Object other)
+	{
+		if(other instanceof Joint)
+		{
+			Joint joint = (Joint)other;
+			return this.x == joint.x && joint.y == joint.y;
+		}
+		return false;
+		
+	}
 }

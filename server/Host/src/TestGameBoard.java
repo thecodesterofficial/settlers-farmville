@@ -184,6 +184,71 @@ public class TestGameBoard extends TestCase {
 			System.out.println(e.getMessage());
 		}
 	}
+	public void testFindHexFromJointsRow1()
+	{
+		List<Joint> adj = board.FindJointsFromHex(2, 0);
+		assertTrue(adj.size() == 6);
+		assertFalse(adj.contains(null));
+		assertTrue(adj.contains(new Joint(2, 0)));
+		assertTrue(adj.contains(new Joint(3, 0)));
+		assertTrue(adj.contains(new Joint(4, 0)));
+		assertTrue(adj.contains(new Joint(2, 1)));
+		assertTrue(adj.contains(new Joint(3, 1)));
+		assertTrue(adj.contains(new Joint(4, 1)));
+		assertFalse(adj.contains(new Joint(0, 0)));
+	}
+	public void testFindHexFromJointsRow2()
+	{
+		List<Joint> adj = board.FindJointsFromHex(2, 1);
+		assertTrue(adj.size() == 6);
+		assertFalse(adj.contains(null));
+		assertTrue(adj.contains(new Joint(3, 1)));
+		assertTrue(adj.contains(new Joint(4, 1)));
+		assertTrue(adj.contains(new Joint(5, 1)));
+		assertTrue(adj.contains(new Joint(3, 2)));
+		assertTrue(adj.contains(new Joint(4, 2)));
+		assertTrue(adj.contains(new Joint(5, 2)));
+	
+	}
+	public void testFindHexFromJointsRow3()
+	{
+		List<Joint> adj = board.FindJointsFromHex(2, 2);
+		assertTrue(adj.size() == 6);
+		assertFalse(adj.contains(null));
+		assertTrue(adj.contains(new Joint(4, 2)));
+		assertTrue(adj.contains(new Joint(5, 2)));
+		assertTrue(adj.contains(new Joint(6, 2)));
+		assertTrue(adj.contains(new Joint(4, 3)));
+		assertTrue(adj.contains(new Joint(5, 3)));
+		assertTrue(adj.contains(new Joint(6, 3)));
+	
+	}
+	
+	public void testFindHexFromJointsRow4()
+	{
+		List<Joint> adj = board.FindJointsFromHex(2, 3);
+		assertTrue(adj.size() == 6);
+		assertFalse(adj.contains(null));
+		assertTrue(adj.contains(new Joint(3, 3)));
+		assertTrue(adj.contains(new Joint(4, 3)));
+		assertTrue(adj.contains(new Joint(5, 3)));
+		assertTrue(adj.contains(new Joint(3, 4)));
+		assertTrue(adj.contains(new Joint(4, 4)));
+		assertTrue(adj.contains(new Joint(5, 4)));
+	
+	}
+	public void testFindHexFromJointsRow5()
+	{
+		List<Joint> adj = board.FindJointsFromHex(2, 4);
+		assertTrue(adj.size() == 6);
+		assertFalse(adj.contains(null));
+		assertTrue(adj.contains(new Joint(2, 4)));
+		assertTrue(adj.contains(new Joint(3, 4)));
+		assertTrue(adj.contains(new Joint(4, 4)));
+		assertTrue(adj.contains(new Joint(2, 5)));
+		assertTrue(adj.contains(new Joint(3, 5)));
+		assertTrue(adj.contains(new Joint(4, 5)));
+	}
 
 
 }

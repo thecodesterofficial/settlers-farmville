@@ -270,6 +270,38 @@ public class GameBoard {
 		}
 		return adj;
 	}
+	public List<Joint> FindJointsFromHex(int x, int y)
+	{
+		List<Joint> adj =  new ArrayList<Joint>();
+		if(y == 0 || y == 4)
+		{
+			adj.add(FindJoint(x, y));
+			adj.add(FindJoint(x + 1, y));
+			adj.add(FindJoint(x + 2, y));
+			adj.add(FindJoint(x, y + 1));
+			adj.add(FindJoint(x + 1, y + 1));
+			adj.add(FindJoint(x + 2, y + 1));
+		}
+		else if(y == 1 || y == 3)
+		{
+			adj.add(FindJoint(x + 1, y));
+			adj.add(FindJoint(x + 2, y));
+			adj.add(FindJoint(x + 3, y));
+			adj.add(FindJoint(x + 1, y + 1));
+			adj.add(FindJoint(x + 2, y + 1));
+			adj.add(FindJoint(x + 3, y + 1));
+		}
+		else if(y == 2)
+		{
+			adj.add(FindJoint(x + 2, y));
+			adj.add(FindJoint(x + 3, y));
+			adj.add(FindJoint(x + 4, y));
+			adj.add(FindJoint(x + 2, y + 1));
+			adj.add(FindJoint(x + 3, y + 1));
+			adj.add(FindJoint(x + 4, y + 1));
+		}
+		return adj;
+	}
 	private void Init()
 	{
 		InitHexes();

@@ -1,0 +1,9 @@
+
+public class Joint {
+	private int x;
+	private int y;
+	public Joint(int x, int y)
+	{
+		
+	}
+}

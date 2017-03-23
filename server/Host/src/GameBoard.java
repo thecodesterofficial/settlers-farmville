@@ -10,7 +10,7 @@ import java.util.List;
 public class GameBoard {
 	
 	private ArrayList<Hex> hexes = new ArrayList<Hex>();
-	
+	private ArrayList<Joint> joints = new ArrayList<Joint>();
 	private static int NUM_TILES_ROW_ONE = 3;
 	private static int NUM_TILES_ROW_TWO = 4;
 	private static int NUM_TILES_ROW_THREE = 5;
@@ -22,6 +22,77 @@ public class GameBoard {
 		InitHexLocations();
 		InitHexType();
 	}
+	
+	private void InitJoints()
+	{
+		// ROW 1
+		
+		joints.add(new Joint(2, 0));
+		joints.add(new Joint(3, 0));
+		joints.add(new Joint(4, 0));
+		joints.add(new Joint(5, 0));
+		joints.add(new Joint(6, 0));
+		joints.add(new Joint(7, 0));
+		joints.add(new Joint(8, 0));
+	
+		// ROW 2
+		joints.add(new Joint(1, 1));
+		joints.add(new Joint(2, 1));
+		joints.add(new Joint(3, 1));
+		joints.add(new Joint(4, 1));
+		joints.add(new Joint(5, 1));
+		joints.add(new Joint(6, 1));
+		joints.add(new Joint(7, 1));
+		joints.add(new Joint(8, 1));
+		joints.add(new Joint(9, 1));
+
+		// ROW 3
+		joints.add(new Joint(0, 2));
+		joints.add(new Joint(1, 2));
+		joints.add(new Joint(2, 2));
+		joints.add(new Joint(3, 2));
+		joints.add(new Joint(4, 2));
+		joints.add(new Joint(5, 2));
+		joints.add(new Joint(6, 2));
+		joints.add(new Joint(7, 2));
+		joints.add(new Joint(8, 2));
+		joints.add(new Joint(9, 2));
+		joints.add(new Joint(10, 2));
+		
+		// ROW 4
+		joints.add(new Joint(0, 3));
+		joints.add(new Joint(1, 3));
+		joints.add(new Joint(2, 3));
+		joints.add(new Joint(3, 3));
+		joints.add(new Joint(4, 3));
+		joints.add(new Joint(5, 3));
+		joints.add(new Joint(6, 3));
+		joints.add(new Joint(7, 3));
+		joints.add(new Joint(8, 3));
+		joints.add(new Joint(9, 3));
+		joints.add(new Joint(10, 3));
+	
+		// ROW 5
+		joints.add(new Joint(1, 4));
+		joints.add(new Joint(2, 4));
+		joints.add(new Joint(3, 4));
+		joints.add(new Joint(4, 4));
+		joints.add(new Joint(5, 4));
+		joints.add(new Joint(6, 4));
+		joints.add(new Joint(7, 4));
+		joints.add(new Joint(8, 4));
+		joints.add(new Joint(9, 4));
+		// ROW 6
+		joints.add(new Joint(2, 5));
+		joints.add(new Joint(3, 5));
+		joints.add(new Joint(4, 5));
+		joints.add(new Joint(5, 5));
+		joints.add(new Joint(6, 5));
+		joints.add(new Joint(7, 5));
+		joints.add(new Joint(8, 5));
+		
+	}
+	
 	private void InitHexLocations()
 	{
 		hexes.add(new Hex(2, 0));
@@ -135,9 +206,80 @@ public class GameBoard {
 		return adj;
 	}
 	
+	public Joint FindJoint(int x, int y)
+	{
+		for(int i = 0; i < joints.size(); i++)
+		{
+			if(joints.get(i).GetX() == x && joints.get(i).GetY() == y)
+			{
+				return joints.get(i);
+			}
+		}
+		return null;
+	}
+	public Joint FindJointAbove(int x, int y)
+	{
+		return FindJoint(x, y -1);
+	}
+	public Joint FindJointBelow(int x, int y)
+	{
+		return FindJoint(x, y + 1);
+	}
+	public Joint FindJointLeft(int x, int y)
+	{
+		return FindJoint(x - 1, y);
+	}
+	public Joint FindJointRight(int x, int y)
+	{
+		return FindJoint(x + 1, y);
+	}
+	public List<Joint> FindAdjacentJoints(int x, int y) throws Exception
+	{
+		Joint target = FindJoint(x, y);
+		if(target == null)
+		{
+			throw new Exception("Count not find joint to find adjacents.");
+		}
+		List<Joint> adj = new ArrayList<Joint>();
+		Joint left = FindJointLeft(x, y);
+		Joint right = FindJointRight(x, y);
+		if(left == null && right != null)
+		{
+			adj.add(right);
+		}
+		else if(right == null && left != null)
+		{
+			adj.add(left);
+		}
+		
+		else
+		{
+			
+			
+			/*if((x % 2 != 0 && y % 2 == 0)
+				|| (x % 2 == 0 && y % 2 != 0))
+			{
+				if((x == 0 && x % 0 == 0) || x != 0)
+				{
+					adj.add(FindJointBelow(x, y));
+				}
+				
+			}
+			else
+			{	
+				if((x == 5 && x % 0 == 0) || x != 5)
+				{
+					adj.add(FindJointAbove(x, y));
+				}
+				
+			}*/
+		}
+		return adj;
+	}
 	private void Init()
 	{
 		InitHexes();
+		InitJoints();
 	}
 	public GameBoard()
 	{

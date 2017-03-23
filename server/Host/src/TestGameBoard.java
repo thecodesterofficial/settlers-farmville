@@ -73,5 +73,102 @@ public class TestGameBoard extends TestCase {
 		List<Hex> adj = board.FindAdjacentHexes(2,  0);
 		assertTrue(adj.size() == 3);
 	}
+	public void testFindJointThere()
+	{
+		Joint joint = board.FindJoint(3,  0);
+		assertTrue(joint.GetX() == 3);
+		assertTrue(joint.GetY() == 0);
+	}
+	public void testFindJointNotThere()
+	{
+		Joint joint = board.FindJoint(0, 0);
+		assertNull(joint);
+	}
+	public void testFindJointAboveThere()
+	{
+		Joint joint = board.FindJointAbove(5, 1);
+		assertTrue(joint.GetX() == 5);
+		assertTrue(joint.GetY() == 0);
+	}
+	public void testFindJointAboveNotThere()
+	{
+		Joint joint = board.FindJointAbove(3, 0);
+		assertNull(joint);
+	}
+	public void testFindJointLeftThere()
+	{
+		Joint joint = board.FindJointLeft(4, 1);
+		assertTrue(joint.GetX() == 3);
+		assertTrue(joint.GetY() == 1);
+	}
+	public void testFindJointLeftNotThere()
+	{
+		Joint joint = board.FindJointLeft(1, 1);
+		assertNull(joint);
+	}
+	public void testFindJointBelowThere()
+	{
+		Joint joint = board.FindJointBelow(3, 0);
+		assertTrue(joint.GetX() == 3);
+		assertTrue(joint.GetY() == 1);
+	}
+	public void testFindJointBelowNotThere()
+	{
+		Joint joint = board.FindJointBelow(4, 5);
+		assertNull(joint);
+	}
+	public void testFindJointRightThere()
+	{
+		Joint joint = board.FindJointRight(3, 1);
+		assertTrue(joint.GetX() == 4);
+		assertTrue(joint.GetY() == 1);
+	}
+	public void testFindJointRightNotThere()
+	{
+		Joint joint = board.FindJointRight(9, 1);
+		assertNull(joint);
+	}
+	public void testFindAdjacentJointsEdge1()
+	{
+		try
+		{
+			List<Joint> adj = board.FindAdjacentJoints(3,  0);
+			
+			assertTrue(adj.size() == 2);
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Problem finding adjacent joints on edge:");
+			System.out.println(e.getMessage());
+		}
+	}
+	public void testFindAdjacentJointsEdge2()
+	{
+		try 
+		{
+			List<Joint> adj = board.FindAdjacentJoints(7, 1);
+			assertTrue(adj.size() == 3);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Problem finding adjacent joints on edge:");
+			System.out.println(e.getMessage());
+		}
+	}
+	public void testFindAjacentJointsFull()
+	{
+		try
+		{
+			List<Joint> adj = board.FindAdjacentJoints(4, 2);
+			assertTrue(adj.size() == 3);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Problem finding adjacent joints on edge:");
+			System.out.println(e.getMessage());
+		}
+	}
+
 
 }

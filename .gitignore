@@ -30,7 +30,7 @@ local.properties
 # Eclipse Core
 .project
 
-#External tool builders
+# External tool builders
 .externalToolBuilders/
 
 # Locally stored "Eclipse launch configurations"

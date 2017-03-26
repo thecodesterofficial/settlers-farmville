@@ -7,6 +7,8 @@ import java.util.List;
 
 
 
+
+
 public class GameBoard {
 	
 	private ArrayList<Hex> hexes = new ArrayList<Hex>();
@@ -117,7 +119,7 @@ public class GameBoard {
 	}
 	private void InitHexType()
 	{
-		Collections.shuffle(hexes); // Since our hexes have location attached.
+		 // Since our hexes have location attached.
 		hexes.get(0).SetType(Hex.HexType.SHEEP);
 		hexes.get(1).SetType(Hex.HexType.SHEEP);
 		hexes.get(2).SetType(Hex.HexType.SHEEP);
@@ -137,6 +139,11 @@ public class GameBoard {
 		hexes.get(16).SetType(Hex.HexType.STONE);
 		hexes.get(17).SetType(Hex.HexType.STONE);
 		hexes.get(18).SetType(Hex.HexType.SAND);
+		for(int i = 0; i < 100; i++)
+		{
+			Collections.shuffle(hexes);
+		}
+		
 	}
 	
 	public Hex FindHex(int x, int y)
@@ -316,6 +323,42 @@ public class GameBoard {
 	public GameBoard()
 	{
 		Init();
+	}
+	// The actual stuff we will need to use for comm
+	public List<Hex> GetHexes()
+	{
+		return hexes;
+	}
+	
+	public void SetHexType(int x, int y, Hex.HexType type)
+	{
+		Hex hex = FindHex(x, y);
+		hex.SetType(type);
+	}
+	public boolean PlaceSettlement(String player, int x, int y)
+	{
+		try
+		{
+			List<Joint> adj = FindAdjacentJoints(x, y);
+			for(Joint joint : adj)
+			{
+				String owner = joint.GetOwner();
+				if(!owner.equals("") && !owner.equals(player))
+				{
+					return false;
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Invalid joint in place settlements");
+			return false;
+		}
+		Joint joint = this.FindJoint(x, y);
+		joint.SetOwner(player);
+		joint.SetStructureType(Joint.StructureType.Settlement);
+		return true;
+		
 	}
 	
 }

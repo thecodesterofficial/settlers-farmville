@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.List;
 
 public class CatanServerManager {
 	
@@ -13,13 +14,14 @@ public class CatanServerManager {
     private int turn = 0;
     public CatanServerManager( int port ) throws IOException {
     	this.socket = new ServerSocket( port );
-        Start();
+        
+    	Start();
+        
     }
-
+    private GameBoard board;
   
     public void Start() throws IOException {
         while ( true ) {
-             System.out.println("Waiting for a connection.");
              Socket connection = socket.accept();
              assignConnection( connection );
         }
@@ -27,7 +29,6 @@ public class CatanServerManager {
     public void Dispatch(String message)
     {
     	for ( int i = 0 ; i < MAX_CLIENTS && this.connections[ i ] != null; i++ ) {    
-    		System.out.println("made it to a connection");
             connections[i].Send(message);
         }
     }
@@ -38,14 +39,20 @@ public class CatanServerManager {
     public void StartGame()
     {
     	Dispatch("game start");
-    
+    	board = new GameBoard();
+    	List<Hex> hexes = board.GetHexes();
+    	for(int i = 0; i < hexes.size(); i++)
+    	{
+    		Hex hex = hexes.get(i);
+    		Dispatch("game init hex " + i + " " + hex.GetType());
+    	}
+    	
+    	
     	Dispatch("player turn " + this.turn);
     	
     }
     
     public void assignConnection( Socket connection ) {
-         
-    	 System.out.println("Assigning a connection...");
          for ( int i = 0 ; i < MAX_CLIENTS ; i++ ) {            
              if ( this.connections[ i ] == null ) {
             	  try

@@ -19,8 +19,13 @@ public class Client {
 	        {
 	        	System.out.println("Connection Established!");
 	        	out.println("game start");
-	        	System.out.println(in.readLine());
-	        	System.out.println(in.readLine());
+	        	while(true)
+	        	{
+	        		while(in.ready())
+	        		{
+	        			System.out.println(in.readLine());
+	        		}
+	        	}
 	        }
 	        else
 	        {

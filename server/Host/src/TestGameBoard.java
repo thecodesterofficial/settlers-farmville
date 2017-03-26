@@ -285,5 +285,31 @@ public class TestGameBoard extends TestCase {
 		assertTrue(adj.contains(new Joint(9, 3)));
 		assertTrue(adj.contains(new Joint(10, 3)));
 	}
+	
+	public void testPlaceSettlementGood()
+	{
+		boolean canPlace = board.PlaceSettlement("john", 2, 2);
+		assertTrue(canPlace);
+		Joint joint = board.FindJoint(2, 2);
+		assertTrue(joint.GetStructureType() == Joint.StructureType.Settlement);
+	}
+	public void testPlace2SettlementsGood()
+	{
+		board.PlaceSettlement("john", 1, 2);
+		boolean canPlace = board.PlaceSettlement("john", 2, 2);
+		assertTrue(canPlace);
+		Joint joint1 = board.FindJoint(1, 2);
+		Joint joint2 = board.FindJoint(2, 2);
+		assertTrue(joint1.GetStructureType() == Joint.StructureType.Settlement);
+		assertTrue(joint2.GetStructureType() == Joint.StructureType.Settlement);
+	}
+	public void testPlaceSettlementBad()
+	{
+		board.PlaceSettlement("john", 2, 2);
+		boolean canPlace = board.PlaceSettlement("rick", 1, 2);
+		assertFalse(canPlace);
+		Joint joint = board.FindJoint(1, 2);
+		assertTrue(joint.GetStructureType() == Joint.StructureType.None);
+	}
 
 }

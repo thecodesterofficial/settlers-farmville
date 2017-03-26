@@ -184,7 +184,7 @@ public class TestGameBoard extends TestCase {
 			System.out.println(e.getMessage());
 		}
 	}
-	public void testFindHexFromJointsRow1()
+	public void testFindJointsFromHexRow1()
 	{
 		List<Joint> adj = board.FindJointsFromHex(2, 0);
 		assertTrue(adj.size() == 6);
@@ -197,7 +197,19 @@ public class TestGameBoard extends TestCase {
 		assertTrue(adj.contains(new Joint(4, 1)));
 		assertFalse(adj.contains(new Joint(0, 0)));
 	}
-	public void testFindHexFromJointsRow2()
+	public void testFindJointsFromHexRow1Test2()
+	{
+		List<Joint> adj = board.FindJointsFromHex(4, 0);
+		assertTrue(adj.size() == 6);
+		assertFalse(adj.contains(null));
+		assertTrue(adj.contains(new Joint(6, 0)));
+		assertTrue(adj.contains(new Joint(7, 0)));
+		assertTrue(adj.contains(new Joint(8, 0)));
+		assertTrue(adj.contains(new Joint(6, 1)));
+		assertTrue(adj.contains(new Joint(7, 1)));
+		assertTrue(adj.contains(new Joint(8, 1)));
+	}
+	public void testFindJointsFromHexRow2()
 	{
 		List<Joint> adj = board.FindJointsFromHex(2, 1);
 		assertTrue(adj.size() == 6);
@@ -210,7 +222,19 @@ public class TestGameBoard extends TestCase {
 		assertTrue(adj.contains(new Joint(5, 2)));
 	
 	}
-	public void testFindHexFromJointsRow3()
+	public void testFindJointsFromHexRow2Test2()
+	{
+		List<Joint> adj = board.FindJointsFromHex(4, 1);
+		assertTrue(adj.size() == 6);
+		assertFalse(adj.contains(null));
+		assertTrue(adj.contains(new Joint(7, 1)));
+		assertTrue(adj.contains(new Joint(8, 1)));
+		assertTrue(adj.contains(new Joint(9, 1)));
+		assertTrue(adj.contains(new Joint(7, 2)));
+		assertTrue(adj.contains(new Joint(8, 2)));
+		assertTrue(adj.contains(new Joint(9, 2)));
+	}
+	public void testFindJointsFromHexRow3()
 	{
 		List<Joint> adj = board.FindJointsFromHex(2, 2);
 		assertTrue(adj.size() == 6);
@@ -224,7 +248,7 @@ public class TestGameBoard extends TestCase {
 	
 	}
 	
-	public void testFindHexFromJointsRow4()
+	public void testFindHJointsFromHexRow4()
 	{
 		List<Joint> adj = board.FindJointsFromHex(2, 3);
 		assertTrue(adj.size() == 6);
@@ -237,7 +261,7 @@ public class TestGameBoard extends TestCase {
 		assertTrue(adj.contains(new Joint(5, 4)));
 	
 	}
-	public void testFindHexFromJointsRow5()
+	public void testFindJointsFromHexRow5()
 	{
 		List<Joint> adj = board.FindJointsFromHex(2, 4);
 		assertTrue(adj.size() == 6);
@@ -249,7 +273,7 @@ public class TestGameBoard extends TestCase {
 		assertTrue(adj.contains(new Joint(3, 5)));
 		assertTrue(adj.contains(new Joint(4, 5)));
 	}
-	public void testFindHexEdgeFromJointsRow3()
+	public void testFindJointsFromHexEdgeRow3()
 	{
 		List<Joint> adj = board.FindJointsFromHex(4, 2);
 		assertTrue(adj.size() == 6);
@@ -257,6 +281,9 @@ public class TestGameBoard extends TestCase {
 		assertTrue(adj.contains(new Joint(8, 2)));
 		assertTrue(adj.contains(new Joint(9, 2)));
 		assertTrue(adj.contains(new Joint(10, 2)));
+		assertTrue(adj.contains(new Joint(8, 3)));
+		assertTrue(adj.contains(new Joint(9, 3)));
+		assertTrue(adj.contains(new Joint(10, 3)));
 	}
 
 }

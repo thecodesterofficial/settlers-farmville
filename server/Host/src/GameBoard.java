@@ -273,33 +273,39 @@ public class GameBoard {
 	public List<Joint> FindJointsFromHex(int x, int y)
 	{
 		List<Joint> adj =  new ArrayList<Joint>();
+		int startX = 0;
 		if(y == 0 || y == 4)
 		{
-			adj.add(FindJoint(x, y));
-			adj.add(FindJoint(x + 1, y));
-			adj.add(FindJoint(x + 2, y));
-			adj.add(FindJoint(x, y + 1));
-			adj.add(FindJoint(x + 1, y + 1));
-			adj.add(FindJoint(x + 2, y + 1));
+			 startX = 2 * x - 2;
 		}
 		else if(y == 1 || y == 3)
 		{
-			adj.add(FindJoint(x + 1, y));
-			adj.add(FindJoint(x + 2, y));
-			adj.add(FindJoint(x + 3, y));
-			adj.add(FindJoint(x + 1, y + 1));
-			adj.add(FindJoint(x + 2, y + 1));
-			adj.add(FindJoint(x + 3, y + 1));
+			switch(x)
+			{
+			case 1:
+				startX = 1;
+				break;
+			case 2:
+				startX = 3;
+				break;
+			case 3:
+				startX = 5;
+				break;
+			case 4:
+				startX = 7;
+				break;
+			}
 		}
 		else if(y == 2)
 		{
-			adj.add(FindJoint(x * 2, y));
-			adj.add(FindJoint(x * 2, y));
-			adj.add(FindJoint(x * 2, y));
-			adj.add(FindJoint(x * 2, y + 1));
-			adj.add(FindJoint(x * 2, y + 1));
-			adj.add(FindJoint(x * 2, y + 1));
+			startX = x * 2;
 		}
+		adj.add(FindJoint(startX, y));
+		adj.add(FindJoint(startX + 1, y));
+		adj.add(FindJoint(startX + 2, y));
+		adj.add(FindJoint(startX, y + 1));
+		adj.add(FindJoint(startX + 1, y + 1));
+		adj.add(FindJoint(startX + 2, y + 1));
 		return adj;
 	}
 	private void Init()

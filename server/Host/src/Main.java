@@ -7,13 +7,6 @@ public class Main {
 		{
 			port = Integer.parseInt(args[0]);
 		}
-		try
-		{
-			CatanServerManager server = new CatanServerManager(port);
-		}
-		catch(IOException e)
-		{
-			System.out.println(e.getMessage());
-		}
+		CatanServerManager.instance().Start(9534);
 	}
 }

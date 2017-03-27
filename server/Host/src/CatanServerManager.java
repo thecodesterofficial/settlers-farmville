@@ -8,61 +8,53 @@ import java.util.ArrayList;
 import java.util.List;
 import core.*;
 public class CatanServerManager {
-	
-	final private ServerSocket socket;
-    final public static int MAX_CLIENTS = 4;
-    List<CatanServer> connections = new ArrayList<CatanServer>();
-    private int turn = 0;
-    public CatanServerManager( int port ) throws IOException {
-    	this.socket = new ServerSocket( port );
-    	Start();
+	private static CatanServerManager instance;
+	private ServerSocket socket;
+    private CatanServerManager() {
+    	
     }
-    public void assignConnection( Socket connection ) {
-    	if(this.connections.size() < MAX_CLIENTS)
+    public static CatanServerManager instance()
+    {
+    	if(instance == null)
     	{
-    		try
-    		{
-    			this.connections.add(new CatanServer(connection, connections.size(), this));
-    		}
-    		catch(IOException e)
-      	  	{
-      		  	System.out.println(e.getMessage());
-      	  	}
+    		instance = new CatanServerManager();
     	}
+    	return instance;
     }
-	 private GameBoard board;
-	  
-	    public void Start() throws IOException {
+    
+    
+    public void Start(int port) {
+    	try
+    	{
+    	    this.socket = new ServerSocket(port);
 	        while ( true ) {
 	             Socket connection = socket.accept();
-	             assignConnection( connection );
+	             ConnectionManager.instance().assignConnection( connection );
 	        }
-	    }
-	    public void Dispatch(String message)
-	    {
-	    	for(CatanServer conn : connections)
-	    	{
-	    		conn.Send(message);
-	    	}
-	    }
-	    public void  NewPlayer(String name)
-	    {
-	    	this.Dispatch("player new " + name);
-	    }
-	    public void StartGame()
-	    {
-	    	Dispatch("game init");
-	    	board = new GameBoard();
-	    	List<Hex> hexes = board.GetHexes();
-	    	for(int i = 0; i < hexes.size(); i++)
-	    	{
-	    		Hex hex = hexes.get(i);
-	    		Dispatch("game init hex " + i + " " + hex.GetType());
-	    	}
-	    	Dispatch("game start");
-	    	
-	    	Dispatch("player turn " + this.turn);
-	    	
-	    }
+    	}
+    	catch(IOException e)
+    	{
+    		System.out.println(e.getMessage());
+    	}
+    }
+    private GameBoard board;
+    public void  NewPlayer(String name)
+    {
+    	ConnectionManager.instance().Dispatch("player new " + name);
+    }
+	    
+    
+    public void StartGame()
+    {
+    	ConnectionManager.instance().Dispatch("game init");
+    	board = new GameBoard();
+    	List<Hex> hexes = board.GetHexes();
+    	for(int i = 0; i < hexes.size(); i++)
+    	{
+    		Hex hex = hexes.get(i);
+    		ConnectionManager.instance().Dispatch("game init hex " + i + " " + hex.GetType());
+    	}
+    	ConnectionManager.instance().Dispatch("game start");
+    }
 
 }

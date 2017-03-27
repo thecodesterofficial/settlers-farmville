@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Random;
 
 
 
@@ -140,9 +141,16 @@ public class GameBoard {
 		hexes.get(16).SetType(Hex.HexType.STONE);
 		hexes.get(17).SetType(Hex.HexType.STONE);
 		hexes.get(18).SetType(Hex.HexType.SAND);
-		for(int i = 0; i < 100; i++)
+		for(int i = 0; i < 2500; i++)
 		{
-			Collections.shuffle(hexes);
+			Random rand = new Random();
+			int ind1 = rand.nextInt(hexes.size());
+			int ind2 = rand.nextInt(hexes.size());
+			Hex hex1 = hexes.get(ind1);
+			Hex hex2 = hexes.get(ind2);
+			Hex.HexType temp = hex1.GetType();
+			hex1.SetType(hex2.GetType());
+			hex2.SetType(temp);
 		}
 		
 	}

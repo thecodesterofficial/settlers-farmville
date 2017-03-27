@@ -1,3 +1,4 @@
+package core;
 
 public class Hex {
 	public enum HexType{

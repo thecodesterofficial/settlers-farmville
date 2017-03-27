@@ -1,3 +1,4 @@
+package core;
 
 public class Joint {
 	public enum StructureType{

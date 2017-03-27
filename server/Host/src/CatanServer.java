@@ -16,7 +16,7 @@ public class CatanServer extends Thread {
         out = new PrintWriter(this.connection.getOutputStream(), true);
         in =  new BufferedReader(new InputStreamReader(this.connection.getInputStream()));
         start();
-    }
+	}
 
     @Override
     public void run() {

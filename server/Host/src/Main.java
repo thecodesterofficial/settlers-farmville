@@ -8,5 +8,6 @@ public class Main {
 			port = Integer.parseInt(args[0]);
 		}
 		CatanServerManager.instance().Start(9534);
+		
 	}
 }

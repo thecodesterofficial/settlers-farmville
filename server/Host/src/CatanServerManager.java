@@ -48,11 +48,11 @@ public class CatanServerManager {
     {
     	ConnectionManager.instance().Dispatch("game init");
     	board = new GameBoard();
-    	List<Hex> hexes = board.GetHexes();
+    	List<Hex> hexes = board.allHexes;
     	for(int i = 0; i < hexes.size(); i++)
     	{
     		Hex hex = hexes.get(i);
-    		ConnectionManager.instance().Dispatch("game init hex " + i + " " + hex.GetType());
+    		ConnectionManager.instance().Dispatch("game init hex " + i + " " + hex.GetHexType() + " " + hex.number);
     	}
     	ConnectionManager.instance().Dispatch("game start");
     }

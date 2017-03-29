@@ -1,54 +1,59 @@
 package core;
 
-public class Joint {
-	public enum StructureType{
-		None,
-		Settlement,
-		City
-	}
-	private int x;
-	private int y;
-	private String owner;
-	private StructureType structure = StructureType.None;
-	public Joint(int x, int y)
-	{
-		this.x = x;
-		this.y = y;
-		this.owner = "";
-	}
-	public int GetX()
-	{
-		return x;
-	}
-	public int GetY()
-	{
-		return y;
-	}
-	@Override
-	public boolean equals(Object other)
-	{
-		if(other instanceof Joint)
-		{
-			Joint joint = (Joint)other;
-			return this.x == joint.x && joint.y == joint.y;
+import java.awt.Color;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class Joint implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public double xLoc;
+	public double yLoc;
+	public Color color = new Color(237, 201, 175);
+	public double size = .03;
+	ArrayList<Joint> adjacent = new ArrayList<Joint>();
+	public boolean city = false;
+
+	public void setAdjacent() {
+
+		int search = -1;
+
+		for (int i = 0; i < GameBoard.allJoints.size(); i++) {
+			if (GameBoard.allJoints.get(i).equals(this))
+				search = i;
 		}
-		return false;
-		
+
+		for (int i = 0; i < GameBoard.allPaths.size(); i++) {
+			if (GameBoard.allPaths.get(i).joints.contains(search)) {
+				for (Integer num : GameBoard.allPaths.get(i).joints) {
+					if (!GameBoard.allJoints.get(num).equals(this))
+						adjacent.add(GameBoard.allJoints.get(num));
+				}
+
+			}
+		}
+
+		/*
+		 * //How to debug the adjacent stuff
+		 * 
+		 * System.out.println("adjacent "+adjacent.size());
+		 * 
+		 * if(search == 0){ size = .05; for(int i = 0; i < adjacent.size();
+		 * i++){ adjacent.get(i).size = .05; } }
+		 */
 	}
-	public String GetOwner()
-	{
-		return owner;
+
+	public Joint(double xLoc, double yLoc) {
+		this.xLoc = xLoc;
+		this.yLoc = yLoc;
 	}
-	public void SetOwner(String owner)
-	{
-		this.owner = owner;
-	}
-	public StructureType GetStructureType()
-	{
-		return structure;
-	}
-	public void SetStructureType(StructureType type)
-	{
-		this.structure = type;
-	}
+
+	/*
+	 * public int getSize(){ return (int)(size*UserInterface.screenWidth); }
+	 */
+
 }

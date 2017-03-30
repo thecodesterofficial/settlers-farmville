@@ -96,7 +96,7 @@ public class LocalStoryBoard {
 							if(parts[0].equals("game") && parts[1].equals("init") && parts[2].equals("hex"))
 							{
 								int index = Integer.parseInt(parts[3]);
-								HexType type = HexType.BRICK;
+								HexType type = HexType.valueOf(parts[4]);
 								int number = Integer.parseInt(parts[5]);
 								game.SetHexTypeAndNumber(index, type, number);
 							}

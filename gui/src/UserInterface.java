@@ -446,6 +446,7 @@ public class UserInterface extends JPanel {
 
 								if (buttonAction.equals("Place Settlement")) {
 									gameBoard.placeSettlementOrCity(selectedJoints);
+									
 									// TODO Communicate to Server
 								} else if (buttonAction.equals("Place Road")) {
 									gameBoard.placePath(selectedJoints);

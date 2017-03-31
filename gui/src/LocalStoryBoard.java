@@ -94,10 +94,10 @@ public class LocalStoryBoard {
 		
 		//init everything and do what you do
 		
-		game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
+		//game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
+		//game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
+		//game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
+		//game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
 		UserInterface local = new UserInterface(game);
 		local.runInterface();
 	}

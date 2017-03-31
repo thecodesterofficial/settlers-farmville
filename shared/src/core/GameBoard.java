@@ -483,8 +483,8 @@ public class GameBoard implements Serializable {
 		allPaths.add(new Path((0.7421875), (0.7078189300411523), (0.7447916666666666), (0.7993827160493827), this));
 		allPaths.add(new Path((0.8333333333333334), (0.7078189300411523), (0.833984375), (0.7973251028806584), this));
 	}
-	private void SetupGameBoard()
-	{
+
+	private void SetupGameBoard() {
 		InitJoints();
 		InitHexes();
 		InitPaths();
@@ -493,17 +493,17 @@ public class GameBoard implements Serializable {
 		}
 
 	}
+
 	public GameBoard(boolean randomize) {
 		InitJoints();
 		InitHexes();
 		InitPaths();
-		if(randomize)
-		{
+		if (randomize) {
 			this.scrambleHexes();
 			this.scrambleNumbers();
 			this.placeRobberOnSand();
 		}
-		
+
 	}
 
 	private void placeRobberOnSand() {
@@ -1245,6 +1245,216 @@ public class GameBoard implements Serializable {
 		}
 
 		return "End Turn";
+	}
+
+	public boolean placeCity(HashSet<Integer> selectedJoints) {
+
+		int sheepCount = 0;
+		int wheatCount = 0;
+		int woodCount = 0;
+		int stoneCount = 0;
+		int brickCount = 0;
+
+		for (int i = 0; i < allPlayers.get(player).cards.size(); i++) {
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.SHEEPRC)
+				sheepCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.BRICKRC)
+				brickCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.FORESTRC)
+				woodCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.STONERC)
+				stoneCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.WHEATRC)
+				wheatCount++;
+
+		}
+
+		for (int i = 0; i < allJoints.size(); i++) {
+
+			if (isGoodCityPlacement(i) && wheatCount >= 2 && stoneCount >= 3) {
+				allPlayers.get(player).cards.remove(ResourceCardType.WHEATRC);
+				allPlayers.get(player).cards.remove(ResourceCardType.WHEATRC);
+				allPlayers.get(player).cards.remove(ResourceCardType.STONERC);
+				allPlayers.get(player).cards.remove(ResourceCardType.STONERC);
+				allPlayers.get(player).cards.remove(ResourceCardType.STONERC);
+				allJoints.get(i).city = true;
+
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean placeSettlement(int index) {
+		// TODO Auto-generated method stub
+
+		int sheepCount = 0;
+		int wheatCount = 0;
+		int woodCount = 0;
+		int stoneCount = 0;
+		int brickCount = 0;
+
+		for (int i = 0; i < allPlayers.get(player).cards.size(); i++) {
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.SHEEPRC)
+				sheepCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.BRICKRC)
+				brickCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.FORESTRC)
+				woodCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.STONERC)
+				stoneCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.WHEATRC)
+				wheatCount++;
+
+		}
+
+		if (round == 1) {
+
+			// houses
+
+			if (isGoodHousePlacement(index) && !CurrentPlayerHasHouse()) {
+				allJoints.get(index).color = allPlayers.get(player).color;
+			}
+
+			return true;
+
+		} else if (round == 2) {
+
+			// Need to add more conditions and actions
+			if (isGoodHousePlacement(index) && !CurrentPlayerHasTwoHouses()) {
+				allJoints.get(index).color = allPlayers.get(player).color;
+			}
+
+			else {
+			}
+
+			return true;
+
+		} else {
+
+			if (isGoodHousePlacement(index) && brickCount >= 1 && woodCount >= 1 && wheatCount >= 1
+					&& sheepCount >= 1) {
+				allPlayers.get(player).cards.remove(ResourceCardType.BRICKRC);
+				allPlayers.get(player).cards.remove(ResourceCardType.FORESTRC);
+				allPlayers.get(player).cards.remove(ResourceCardType.WHEATRC);
+				allPlayers.get(player).cards.remove(ResourceCardType.SHEEPRC);
+				allJoints.get(index).color = allPlayers.get(player).color;
+			}
+
+			return true;
+
+		}
+	}
+
+	public boolean placePath(int index) {
+		// TODO Auto-generated method stub
+		int sheepCount = 0;
+		int wheatCount = 0;
+		int woodCount = 0;
+		int stoneCount = 0;
+		int brickCount = 0;
+
+		for (int i = 0; i < allPlayers.get(player).cards.size(); i++) {
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.SHEEPRC)
+				sheepCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.BRICKRC)
+				brickCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.FORESTRC)
+				woodCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.STONERC)
+				stoneCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.WHEATRC)
+				wheatCount++;
+
+		}
+
+		if (round == 1) {
+
+			// Need to add more conditions and actions
+			if (isGoodPathPlacement(index) && !CurrentPlayerHasRoad()) {
+				allPaths.get(index).color = allPlayers.get(player).color;
+				return true;// Can return after finding the right thing
+
+			}
+
+		} else if (round == 2) {
+
+			// Need to add more conditions and actions
+			if (isGoodPathPlacement(index) && !CurrentPlayerHasTwoRoads() && settlementDoesntHaveRoad(index)) {
+				allPaths.get(index).color = allPlayers.get(player).color;
+				return true;// Can return after finding the right thing
+
+			}
+
+		} else {
+
+			// Need to add more conditions and actions
+			if (isGoodPathPlacement(index) && woodCount >= 1 && brickCount >= 1) {
+				allPaths.get(index).color = allPlayers.get(player).color;
+				allPlayers.get(player).cards.remove(ResourceCardType.FORESTRC);
+				allPlayers.get(player).cards.remove(ResourceCardType.BRICKRC);
+				return true;
+
+			}
+
+		}
+
+		return false;
+
+	}
+
+	public boolean placeCity(int index) {
+		// TODO Auto-generated method stub
+
+		int sheepCount = 0;
+		int wheatCount = 0;
+		int woodCount = 0;
+		int stoneCount = 0;
+		int brickCount = 0;
+
+		for (int i = 0; i < allPlayers.get(player).cards.size(); i++) {
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.SHEEPRC)
+				sheepCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.BRICKRC)
+				brickCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.FORESTRC)
+				woodCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.STONERC)
+				stoneCount++;
+
+			if (allPlayers.get(player).cards.get(i) == ResourceCardType.WHEATRC)
+				wheatCount++;
+
+		}
+
+		if (isGoodCityPlacement(index) && wheatCount >= 2 && stoneCount >= 3) {
+			allPlayers.get(player).cards.remove(ResourceCardType.WHEATRC);
+			allPlayers.get(player).cards.remove(ResourceCardType.WHEATRC);
+			allPlayers.get(player).cards.remove(ResourceCardType.STONERC);
+			allPlayers.get(player).cards.remove(ResourceCardType.STONERC);
+			allPlayers.get(player).cards.remove(ResourceCardType.STONERC);
+			allJoints.get(index).city = true;
+
+			return true;
+		}
+
+		return false;
+
 	}
 
 }

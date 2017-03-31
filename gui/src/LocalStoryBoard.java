@@ -27,51 +27,6 @@ public class LocalStoryBoard {
 		Player p4 = new Player(Color.yellow, "player 4");
 		
 		
-		
-		
-		/*
-		game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.FORESTRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.SHEEPRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.STONERC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.WHEATRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.FORESTRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.SHEEPRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.STONERC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.WHEATRC);
-		game.allPlayers.get(0).cards.add(ResourceCardType.WHEATRC);
-		
-		game.allPlayers.get(1).cards.add(ResourceCardType.WHEATRC);
-		game.allPlayers.get(1).cards.add(ResourceCardType.BRICKRC);
-		game.allPlayers.get(1).cards.add(ResourceCardType.FORESTRC);
-		game.allPlayers.get(1).cards.add(ResourceCardType.STONERC);
-		game.allPlayers.get(1).cards.add(ResourceCardType.SHEEPRC);
-		
-		
-		
-		game.allPlayers.get(2).cards.add(ResourceCardType.SHEEPRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.BRICKRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.STONERC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.WHEATRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.FORESTRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.SHEEPRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.BRICKRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.STONERC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.WHEATRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.FORESTRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.WHEATRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.FORESTRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.WHEATRC);
-		game.allPlayers.get(2).cards.add(ResourceCardType.FORESTRC);
-
-		
-		game.allPlayers.get(3).cards.add(ResourceCardType.FORESTRC);
-		game.allPlayers.get(3).cards.add(ResourceCardType.BRICKRC);
-		game.allPlayers.get(3).cards.add(ResourceCardType.SHEEPRC);
-		game.allPlayers.get(3).cards.add(ResourceCardType.WHEATRC);
-		game.allPlayers.get(3).cards.add(ResourceCardType.STONERC);
-		*/
 		game = new GameBoard();
 		
 		boolean server = true;
@@ -82,7 +37,7 @@ public class LocalStoryBoard {
 			ServerComm comm = new ServerComm(ip, 9534, username, game);
 			int dialogResult = JOptionPane.showConfirmDialog (null, "Let me know when you want to start game...");
 			if(dialogResult == JOptionPane.YES_OPTION){
-				comm.sendMessage("start game");
+				comm.sendMessage("game start");
 				UserInterface local = new UserInterface(game);
 				local.runInterface();
 			}

@@ -269,75 +269,81 @@ public class GameBoard implements Serializable {
     	hex.hexType = type;
     	hex.number = number;
     }
+    
+    private void InitJoints()
+    {
+    	// Joints from left to right, top to bottom
+    			// Row 1
+    			allJoints.add(new Joint((0.560546875), 0.1882716049382716, this));
+    			allJoints.add(new Joint((0.6061197916666666), 0.147119341563786, this));
+    			allJoints.add(new Joint((0.6477864583333334), 0.18209876543209877, this));
+    			allJoints.add(new Joint((0.6920572916666666), 0.1440329218106996, this));
+    			allJoints.add(new Joint((0.7350260416666666), 0.18209876543209877, this));
+    			allJoints.add(new Joint((0.7799479166666666), 0.14094650205761317, this));
+    			allJoints.add(new Joint((0.82421875), 0.18621399176954734, this));
+    			// Row 2
+    			allJoints.add(new Joint((0.5143229166666666), (0.31584362139917693), this));
+    			allJoints.add(new Joint((0.5611979166666666), (0.2716049382716049), this));
+    			allJoints.add(new Joint((0.6028645833333334), (0.3096707818930041), this));
+    			allJoints.add(new Joint((0.6471354166666666), (0.26954732510288065), this));
+    			allJoints.add(new Joint((0.69140625), (0.3117283950617284), this));
+    			allJoints.add(new Joint((0.7369791666666666), (0.26954732510288065), this));
+    			allJoints.add(new Joint((0.78125), (0.3117283950617284), this));
+    			allJoints.add(new Joint((0.8255208333333334), (0.2705761316872428), this));
+    			allJoints.add(new Joint((0.869140625), (0.30864197530864196), this));
+
+    			// Row 3
+    			allJoints.add(new Joint((0.4680989583333333), (0.4454732510288066), this));
+    			allJoints.add(new Joint((0.5143229166666666), (0.3991769547325103), this));
+    			allJoints.add(new Joint((0.5579427083333334), (0.4403292181069959), this));
+    			allJoints.add(new Joint((0.6028645833333334), (0.3991769547325103), this));
+    			allJoints.add(new Joint((0.6471354166666666), (0.4403292181069959), this));
+    			allJoints.add(new Joint((0.693359375), (0.4022633744855967), this));
+    			allJoints.add(new Joint((0.7389322916666666), (0.44238683127572015), this));
+    			allJoints.add(new Joint((0.7819010416666666), (0.4022633744855967), this));
+    			allJoints.add(new Joint((0.826171875), (0.43930041152263377), this));
+    			allJoints.add(new Joint((0.8723958333333334), (0.39814814814814814), this));
+    			allJoints.add(new Joint((0.9166666666666666), (0.43621399176954734), this));
+
+    			// Row 4
+    			allJoints.add(new Joint((0.470703125), (0.5318930041152263), this));
+    			allJoints.add(new Joint((0.5130208333333334), (0.5771604938271605), this));
+    			allJoints.add(new Joint((0.5592447916666666), (0.5318930041152263), this));
+    			allJoints.add(new Joint((0.603515625), (0.5740740740740741), this));
+    			allJoints.add(new Joint((0.6484375), (0.529835390946502), this));
+    			allJoints.add(new Joint((0.6953125), (0.573045267489712), this));
+    			allJoints.add(new Joint((0.7389322916666666), (0.5329218106995884), this));
+    			allJoints.add(new Joint((0.7838541666666666), (0.573045267489712), this));
+    			allJoints.add(new Joint((0.8294270833333334), (0.5277777777777778), this));
+    			allJoints.add(new Joint((0.8776041666666666), (0.5689300411522634), this));
+    			allJoints.add(new Joint((0.9205729166666666), (0.5246913580246914), this));
+
+    			// Row 5
+    			allJoints.add(new Joint((0.51171875), (0.6656378600823045), this));
+    			allJoints.add(new Joint((0.5579427083333334), (0.7098765432098766), this));
+    			allJoints.add(new Joint((0.6041666666666666), (0.6635802469135802), this));
+    			allJoints.add(new Joint((0.6497395833333334), (0.7057613168724279), this));
+    			allJoints.add(new Joint((0.6953125), (0.6646090534979424), this));
+    			allJoints.add(new Joint((0.7408854166666666), (0.7067901234567902), this));
+    			allJoints.add(new Joint((0.7884114583333334), (0.6635802469135802), this));
+    			allJoints.add(new Joint((0.833984375), (0.7057613168724279), this));
+    			allJoints.add(new Joint((0.8776041666666666), (0.6584362139917695), this));
+
+    			// Row 6
+    			allJoints.add(new Joint((0.5592447916666666), (0.8034979423868313), this));
+    			allJoints.add(new Joint((0.6048177083333334), (0.845679012345679), this));
+    			allJoints.add(new Joint((0.650390625), (0.8024691358024691), this));
+    			allJoints.add(new Joint((0.697265625), (0.8415637860082305), this));
+    			allJoints.add(new Joint((0.7434895833333334), (0.8024691358024691), this));
+    			allJoints.add(new Joint((0.7903645833333334), (0.8395061728395061), this));
+    			allJoints.add(new Joint((0.8346354166666666), (0.7962962962962963), this));
+    }
+    
 	public GameBoard() {
 
 		// Patrick put all the constructors below this comment
 
-		// Joints from left to right, top to bottom
-		// Row 1
-		allJoints.add(new Joint((0.560546875), 0.1882716049382716, this));
-		allJoints.add(new Joint((0.6061197916666666), 0.147119341563786, this));
-		allJoints.add(new Joint((0.6477864583333334), 0.18209876543209877, this));
-		allJoints.add(new Joint((0.6920572916666666), 0.1440329218106996, this));
-		allJoints.add(new Joint((0.7350260416666666), 0.18209876543209877, this));
-		allJoints.add(new Joint((0.7799479166666666), 0.14094650205761317, this));
-		allJoints.add(new Joint((0.82421875), 0.18621399176954734, this));
-		// Row 2
-		allJoints.add(new Joint((0.5143229166666666), (0.31584362139917693), this));
-		allJoints.add(new Joint((0.5611979166666666), (0.2716049382716049), this));
-		allJoints.add(new Joint((0.6028645833333334), (0.3096707818930041), this));
-		allJoints.add(new Joint((0.6471354166666666), (0.26954732510288065), this));
-		allJoints.add(new Joint((0.69140625), (0.3117283950617284), this));
-		allJoints.add(new Joint((0.7369791666666666), (0.26954732510288065), this));
-		allJoints.add(new Joint((0.78125), (0.3117283950617284), this));
-		allJoints.add(new Joint((0.8255208333333334), (0.2705761316872428), this));
-		allJoints.add(new Joint((0.869140625), (0.30864197530864196), this));
-
-		// Row 3
-		allJoints.add(new Joint((0.4680989583333333), (0.4454732510288066), this));
-		allJoints.add(new Joint((0.5143229166666666), (0.3991769547325103), this));
-		allJoints.add(new Joint((0.5579427083333334), (0.4403292181069959), this));
-		allJoints.add(new Joint((0.6028645833333334), (0.3991769547325103), this));
-		allJoints.add(new Joint((0.6471354166666666), (0.4403292181069959), this));
-		allJoints.add(new Joint((0.693359375), (0.4022633744855967), this));
-		allJoints.add(new Joint((0.7389322916666666), (0.44238683127572015), this));
-		allJoints.add(new Joint((0.7819010416666666), (0.4022633744855967), this));
-		allJoints.add(new Joint((0.826171875), (0.43930041152263377), this));
-		allJoints.add(new Joint((0.8723958333333334), (0.39814814814814814), this));
-		allJoints.add(new Joint((0.9166666666666666), (0.43621399176954734), this));
-
-		// Row 4
-		allJoints.add(new Joint((0.470703125), (0.5318930041152263), this));
-		allJoints.add(new Joint((0.5130208333333334), (0.5771604938271605), this));
-		allJoints.add(new Joint((0.5592447916666666), (0.5318930041152263), this));
-		allJoints.add(new Joint((0.603515625), (0.5740740740740741), this));
-		allJoints.add(new Joint((0.6484375), (0.529835390946502), this));
-		allJoints.add(new Joint((0.6953125), (0.573045267489712), this));
-		allJoints.add(new Joint((0.7389322916666666), (0.5329218106995884), this));
-		allJoints.add(new Joint((0.7838541666666666), (0.573045267489712), this));
-		allJoints.add(new Joint((0.8294270833333334), (0.5277777777777778), this));
-		allJoints.add(new Joint((0.8776041666666666), (0.5689300411522634), this));
-		allJoints.add(new Joint((0.9205729166666666), (0.5246913580246914), this));
-
-		// Row 5
-		allJoints.add(new Joint((0.51171875), (0.6656378600823045), this));
-		allJoints.add(new Joint((0.5579427083333334), (0.7098765432098766), this));
-		allJoints.add(new Joint((0.6041666666666666), (0.6635802469135802), this));
-		allJoints.add(new Joint((0.6497395833333334), (0.7057613168724279), this));
-		allJoints.add(new Joint((0.6953125), (0.6646090534979424), this));
-		allJoints.add(new Joint((0.7408854166666666), (0.7067901234567902), this));
-		allJoints.add(new Joint((0.7884114583333334), (0.6635802469135802), this));
-		allJoints.add(new Joint((0.833984375), (0.7057613168724279), this));
-		allJoints.add(new Joint((0.8776041666666666), (0.6584362139917695), this));
-
-		// Row 6
-		allJoints.add(new Joint((0.5592447916666666), (0.8034979423868313), this));
-		allJoints.add(new Joint((0.6048177083333334), (0.845679012345679), this));
-		allJoints.add(new Joint((0.650390625), (0.8024691358024691), this));
-		allJoints.add(new Joint((0.697265625), (0.8415637860082305), this));
-		allJoints.add(new Joint((0.7434895833333334), (0.8024691358024691), this));
-		allJoints.add(new Joint((0.7903645833333334), (0.8395061728395061), this));
-		allJoints.add(new Joint((0.8346354166666666), (0.7962962962962963), this));
+		InitJoints();
 
 		// Tiles from left to right, top to bottom
 		// Row 1

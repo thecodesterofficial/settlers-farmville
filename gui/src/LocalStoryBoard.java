@@ -27,7 +27,7 @@ public class LocalStoryBoard {
 		Player p4 = new Player(Color.yellow, "player 4");
 		
 		
-		game = new GameBoard();
+		game = new GameBoard(false);
 		
 		boolean server = true;
 		if (server) { // Will make this prettier later. 

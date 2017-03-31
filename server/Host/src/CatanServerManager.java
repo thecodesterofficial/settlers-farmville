@@ -11,7 +11,7 @@ public class CatanServerManager {
 	private static CatanServerManager instance;
 	private ServerSocket socket;
     private CatanServerManager() {
-    	board = new GameBoard();
+    	board = new GameBoard(true);
     }
     public static CatanServerManager instance()
     {

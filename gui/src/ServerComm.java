@@ -43,7 +43,9 @@ public class ServerComm extends Thread {
 		{
 			if(parts[2].equals("hex"))
 			{
+				
 				int index = Integer.parseInt(parts[3]);
+				System.out.println("Setting Hex " + index);
 				HexType type = HexType.valueOf(parts[4]);
 				int number = Integer.parseInt(parts[5]);
 				game.SetHexTypeAndNumber(index, type, number);
@@ -97,17 +99,17 @@ public class ServerComm extends Thread {
 			try {
 				if (in.ready()) {
 					String data = in.readLine();
-					
+					System.out.println(data);
 					String[] split = data.split(" ");
 					if (split.length > 0) {
 						process(split);
 					}
-
-				}
+				
+			}
 
 			} catch (Exception e) {
 				System.out.println(e.getStackTrace().toString());
-				return;
+			
 			}
 
 		}

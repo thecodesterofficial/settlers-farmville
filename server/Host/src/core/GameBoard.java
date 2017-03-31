@@ -14,11 +14,11 @@ public class GameBoard implements Serializable {
 	 */
 	public int player = 0;
 	private static final long serialVersionUID = 1L;
-	public static ArrayList<Path> allPaths = new ArrayList<Path>();
-	public static ArrayList<Hex> allHexes = new ArrayList<Hex>();
-	public static ArrayList<Joint> allJoints = new ArrayList<Joint>();
-	public static Robber rob;
-	public static ArrayList<HexType> hexInitArray = new ArrayList<HexType>();
+	public ArrayList<Path> allPaths = new ArrayList<Path>();
+	public ArrayList<Hex> allHexes = new ArrayList<Hex>();
+	public ArrayList<Joint> allJoints = new ArrayList<Joint>();
+	public Robber rob;
+	public ArrayList<HexType> hexInitArray = new ArrayList<HexType>();
 	public ArrayList<Player> allPlayers = new ArrayList<Player>();
 	public int currentRoll = -1;
 	public int round = 1;
@@ -297,187 +297,187 @@ public class GameBoard implements Serializable {
 
 		// Joints from left to right, top to bottom
 		// Row 1
-		allJoints.add(new Joint((0.560546875), (0.1882716049382716)));
-		allJoints.add(new Joint((0.6061197916666666), (0.147119341563786)));
-		allJoints.add(new Joint((0.6477864583333334), (0.18209876543209877)));
-		allJoints.add(new Joint((0.6920572916666666), (0.1440329218106996)));
-		allJoints.add(new Joint((0.7350260416666666), (0.18209876543209877)));
-		allJoints.add(new Joint((0.7799479166666666), (0.14094650205761317)));
-		allJoints.add(new Joint((0.82421875), (0.18621399176954734)));
+		allJoints.add(new Joint((0.560546875), 0.1882716049382716, this));
+		allJoints.add(new Joint((0.6061197916666666), 0.147119341563786, this));
+		allJoints.add(new Joint((0.6477864583333334), 0.18209876543209877, this));
+		allJoints.add(new Joint((0.6920572916666666), 0.1440329218106996, this));
+		allJoints.add(new Joint((0.7350260416666666), 0.18209876543209877, this));
+		allJoints.add(new Joint((0.7799479166666666), 0.14094650205761317, this));
+		allJoints.add(new Joint((0.82421875), 0.18621399176954734, this));
 		// Row 2
-		allJoints.add(new Joint((0.5143229166666666), (0.31584362139917693)));
-		allJoints.add(new Joint((0.5611979166666666), (0.2716049382716049)));
-		allJoints.add(new Joint((0.6028645833333334), (0.3096707818930041)));
-		allJoints.add(new Joint((0.6471354166666666), (0.26954732510288065)));
-		allJoints.add(new Joint((0.69140625), (0.3117283950617284)));
-		allJoints.add(new Joint((0.7369791666666666), (0.26954732510288065)));
-		allJoints.add(new Joint((0.78125), (0.3117283950617284)));
-		allJoints.add(new Joint((0.8255208333333334), (0.2705761316872428)));
-		allJoints.add(new Joint((0.869140625), (0.30864197530864196)));
+		allJoints.add(new Joint((0.5143229166666666), (0.31584362139917693), this));
+		allJoints.add(new Joint((0.5611979166666666), (0.2716049382716049), this));
+		allJoints.add(new Joint((0.6028645833333334), (0.3096707818930041), this));
+		allJoints.add(new Joint((0.6471354166666666), (0.26954732510288065), this));
+		allJoints.add(new Joint((0.69140625), (0.3117283950617284), this));
+		allJoints.add(new Joint((0.7369791666666666), (0.26954732510288065), this));
+		allJoints.add(new Joint((0.78125), (0.3117283950617284), this));
+		allJoints.add(new Joint((0.8255208333333334), (0.2705761316872428), this));
+		allJoints.add(new Joint((0.869140625), (0.30864197530864196), this));
 
 		// Row 3
-		allJoints.add(new Joint((0.4680989583333333), (0.4454732510288066)));
-		allJoints.add(new Joint((0.5143229166666666), (0.3991769547325103)));
-		allJoints.add(new Joint((0.5579427083333334), (0.4403292181069959)));
-		allJoints.add(new Joint((0.6028645833333334), (0.3991769547325103)));
-		allJoints.add(new Joint((0.6471354166666666), (0.4403292181069959)));
-		allJoints.add(new Joint((0.693359375), (0.4022633744855967)));
-		allJoints.add(new Joint((0.7389322916666666), (0.44238683127572015)));
-		allJoints.add(new Joint((0.7819010416666666), (0.4022633744855967)));
-		allJoints.add(new Joint((0.826171875), (0.43930041152263377)));
-		allJoints.add(new Joint((0.8723958333333334), (0.39814814814814814)));
-		allJoints.add(new Joint((0.9166666666666666), (0.43621399176954734)));
+		allJoints.add(new Joint((0.4680989583333333), (0.4454732510288066), this));
+		allJoints.add(new Joint((0.5143229166666666), (0.3991769547325103), this));
+		allJoints.add(new Joint((0.5579427083333334), (0.4403292181069959), this));
+		allJoints.add(new Joint((0.6028645833333334), (0.3991769547325103), this));
+		allJoints.add(new Joint((0.6471354166666666), (0.4403292181069959), this));
+		allJoints.add(new Joint((0.693359375), (0.4022633744855967), this));
+		allJoints.add(new Joint((0.7389322916666666), (0.44238683127572015), this));
+		allJoints.add(new Joint((0.7819010416666666), (0.4022633744855967), this));
+		allJoints.add(new Joint((0.826171875), (0.43930041152263377), this));
+		allJoints.add(new Joint((0.8723958333333334), (0.39814814814814814), this));
+		allJoints.add(new Joint((0.9166666666666666), (0.43621399176954734), this));
 
 		// Row 4
-		allJoints.add(new Joint((0.470703125), (0.5318930041152263)));
-		allJoints.add(new Joint((0.5130208333333334), (0.5771604938271605)));
-		allJoints.add(new Joint((0.5592447916666666), (0.5318930041152263)));
-		allJoints.add(new Joint((0.603515625), (0.5740740740740741)));
-		allJoints.add(new Joint((0.6484375), (0.529835390946502)));
-		allJoints.add(new Joint((0.6953125), (0.573045267489712)));
-		allJoints.add(new Joint((0.7389322916666666), (0.5329218106995884)));
-		allJoints.add(new Joint((0.7838541666666666), (0.573045267489712)));
-		allJoints.add(new Joint((0.8294270833333334), (0.5277777777777778)));
-		allJoints.add(new Joint((0.8776041666666666), (0.5689300411522634)));
-		allJoints.add(new Joint((0.9205729166666666), (0.5246913580246914)));
+		allJoints.add(new Joint((0.470703125), (0.5318930041152263), this));
+		allJoints.add(new Joint((0.5130208333333334), (0.5771604938271605), this));
+		allJoints.add(new Joint((0.5592447916666666), (0.5318930041152263), this));
+		allJoints.add(new Joint((0.603515625), (0.5740740740740741), this));
+		allJoints.add(new Joint((0.6484375), (0.529835390946502), this));
+		allJoints.add(new Joint((0.6953125), (0.573045267489712), this));
+		allJoints.add(new Joint((0.7389322916666666), (0.5329218106995884), this));
+		allJoints.add(new Joint((0.7838541666666666), (0.573045267489712), this));
+		allJoints.add(new Joint((0.8294270833333334), (0.5277777777777778), this));
+		allJoints.add(new Joint((0.8776041666666666), (0.5689300411522634), this));
+		allJoints.add(new Joint((0.9205729166666666), (0.5246913580246914), this));
 
 		// Row 5
-		allJoints.add(new Joint((0.51171875), (0.6656378600823045)));
-		allJoints.add(new Joint((0.5579427083333334), (0.7098765432098766)));
-		allJoints.add(new Joint((0.6041666666666666), (0.6635802469135802)));
-		allJoints.add(new Joint((0.6497395833333334), (0.7057613168724279)));
-		allJoints.add(new Joint((0.6953125), (0.6646090534979424)));
-		allJoints.add(new Joint((0.7408854166666666), (0.7067901234567902)));
-		allJoints.add(new Joint((0.7884114583333334), (0.6635802469135802)));
-		allJoints.add(new Joint((0.833984375), (0.7057613168724279)));
-		allJoints.add(new Joint((0.8776041666666666), (0.6584362139917695)));
+		allJoints.add(new Joint((0.51171875), (0.6656378600823045), this));
+		allJoints.add(new Joint((0.5579427083333334), (0.7098765432098766), this));
+		allJoints.add(new Joint((0.6041666666666666), (0.6635802469135802), this));
+		allJoints.add(new Joint((0.6497395833333334), (0.7057613168724279), this));
+		allJoints.add(new Joint((0.6953125), (0.6646090534979424), this));
+		allJoints.add(new Joint((0.7408854166666666), (0.7067901234567902), this));
+		allJoints.add(new Joint((0.7884114583333334), (0.6635802469135802), this));
+		allJoints.add(new Joint((0.833984375), (0.7057613168724279), this));
+		allJoints.add(new Joint((0.8776041666666666), (0.6584362139917695), this));
 
 		// Row 6
-		allJoints.add(new Joint((0.5592447916666666), (0.8034979423868313)));
-		allJoints.add(new Joint((0.6048177083333334), (0.845679012345679)));
-		allJoints.add(new Joint((0.650390625), (0.8024691358024691)));
-		allJoints.add(new Joint((0.697265625), (0.8415637860082305)));
-		allJoints.add(new Joint((0.7434895833333334), (0.8024691358024691)));
-		allJoints.add(new Joint((0.7903645833333334), (0.8395061728395061)));
-		allJoints.add(new Joint((0.8346354166666666), (0.7962962962962963)));
+		allJoints.add(new Joint((0.5592447916666666), (0.8034979423868313), this));
+		allJoints.add(new Joint((0.6048177083333334), (0.845679012345679), this));
+		allJoints.add(new Joint((0.650390625), (0.8024691358024691), this));
+		allJoints.add(new Joint((0.697265625), (0.8415637860082305), this));
+		allJoints.add(new Joint((0.7434895833333334), (0.8024691358024691), this));
+		allJoints.add(new Joint((0.7903645833333334), (0.8395061728395061), this));
+		allJoints.add(new Joint((0.8346354166666666), (0.7962962962962963), this));
 
 		// Tiles from left to right, top to bottom
 		// Row 1
-		allHexes.add(new Hex((0.607421875), (0.2345679012345679)));
-		allHexes.add(new Hex((0.6946614583333334), (0.23353909465020575)));
-		allHexes.add(new Hex((0.7819010416666666), (0.23148148148148148)));
+		allHexes.add(new Hex((0.607421875), (0.2345679012345679), this));
+		allHexes.add(new Hex((0.6946614583333334), (0.23353909465020575), this));
+		allHexes.add(new Hex((0.7819010416666666), (0.23148148148148148), this));
 		// Row 2
-		allHexes.add(new Hex((0.5618489583333334), (0.36213991769547327)));
-		allHexes.add(new Hex((0.6497395833333334), (0.3611111111111111)));
-		allHexes.add(new Hex((0.7395833333333334), (0.3611111111111111)));
-		allHexes.add(new Hex((0.8274739583333334), (0.3631687242798354)));
+		allHexes.add(new Hex((0.5618489583333334), (0.36213991769547327), this));
+		allHexes.add(new Hex((0.6497395833333334), (0.3611111111111111), this));
+		allHexes.add(new Hex((0.7395833333333334), (0.3611111111111111), this));
+		allHexes.add(new Hex((0.8274739583333334), (0.3631687242798354), this));
 		// Row 3
-		allHexes.add(new Hex((0.5149739583333334), (0.492798353909465)));
-		allHexes.add(new Hex((0.6041666666666666), (0.49176954732510286)));
-		allHexes.add(new Hex((0.6966145833333334), (0.49382716049382713)));
-		allHexes.add(new Hex((0.78515625), (0.49382716049382713)));
-		allHexes.add(new Hex((0.875), (0.4876543209876543)));
+		allHexes.add(new Hex((0.5149739583333334), (0.492798353909465), this));
+		allHexes.add(new Hex((0.6041666666666666), (0.49176954732510286), this));
+		allHexes.add(new Hex((0.6966145833333334), (0.49382716049382713), this));
+		allHexes.add(new Hex((0.78515625), (0.49382716049382713), this));
+		allHexes.add(new Hex((0.875), (0.4876543209876543), this));
 		// Row 4
-		allHexes.add(new Hex((0.5579427083333334), (0.6306584362139918)));
-		allHexes.add(new Hex((0.6516927083333334), (0.6193415637860082)));
-		allHexes.add(new Hex((0.7421875), (0.6244855967078189)));
-		allHexes.add(new Hex((0.8326822916666666), (0.6193415637860082)));
+		allHexes.add(new Hex((0.5579427083333334), (0.6306584362139918), this));
+		allHexes.add(new Hex((0.6516927083333334), (0.6193415637860082), this));
+		allHexes.add(new Hex((0.7421875), (0.6244855967078189), this));
+		allHexes.add(new Hex((0.8326822916666666), (0.6193415637860082), this));
 		// Row 5
-		allHexes.add(new Hex((0.6048177083333334), (0.7582304526748971)));
-		allHexes.add(new Hex((0.6966145833333334), (0.7551440329218106)));
-		allHexes.add(new Hex((0.7884114583333334), (0.757201646090535)));
+		allHexes.add(new Hex((0.6048177083333334), (0.7582304526748971), this));
+		allHexes.add(new Hex((0.6966145833333334), (0.7551440329218106), this));
+		allHexes.add(new Hex((0.7884114583333334), (0.757201646090535), this));
 
 		// Horizontal paths, from left to right, top to bottom
 		// Row 1
 		allPaths.add(
-				new Path((0.5638020833333334), (0.19135802469135801), (0.6061197916666666), (0.15020576131687244)));
-		allPaths.add(new Path((0.6067708333333334), (0.15020576131687244), (0.6484375), (0.18724279835390947)));
-		allPaths.add(new Path((0.6484375), (0.18724279835390947), (0.6927083333333334), (0.14814814814814814)));
-		allPaths.add(new Path((0.6927083333333334), (0.14814814814814814), (0.7356770833333334), (0.1831275720164609)));
-		allPaths.add(new Path((0.7356770833333334), (0.1831275720164609), (0.7779947916666666), (0.14609053497942387)));
+				new Path((0.5638020833333334), (0.19135802469135801), (0.6061197916666666), (0.15020576131687244), this));
+		allPaths.add(new Path((0.6067708333333334), (0.15020576131687244), (0.6484375), (0.18724279835390947), this));
+		allPaths.add(new Path((0.6484375), (0.18724279835390947), (0.6927083333333334), (0.14814814814814814), this));
+		allPaths.add(new Path((0.6927083333333334), (0.14814814814814814), (0.7356770833333334), (0.1831275720164609), this));
+		allPaths.add(new Path((0.7356770833333334), (0.1831275720164609), (0.7779947916666666), (0.14609053497942387), this));
 		allPaths.add(
-				new Path((0.7779947916666666), (0.14609053497942387), (0.8235677083333334), (0.18518518518518517)));
+				new Path((0.7779947916666666), (0.14609053497942387), (0.8235677083333334), (0.18518518518518517), this));
 		// Row 2
-		allPaths.add(new Path((0.517578125), (0.31584362139917693), (0.5611979166666666), (0.2736625514403292)));
-		allPaths.add(new Path((0.5611979166666666), (0.2726337448559671), (0.6067708333333334), (0.31378600823045266)));
-		allPaths.add(new Path((0.6067708333333334), (0.31378600823045266), (0.650390625), (0.2716049382716049)));
-		allPaths.add(new Path((0.650390625), (0.2705761316872428), (0.6940104166666666), (0.31275720164609055)));
-		allPaths.add(new Path((0.6940104166666666), (0.3117283950617284), (0.73828125), (0.26954732510288065)));
-		allPaths.add(new Path((0.73828125), (0.26954732510288065), (0.7825520833333334), (0.3117283950617284)));
-		allPaths.add(new Path((0.7838541666666666), (0.3148148148148148), (0.8268229166666666), (0.2726337448559671)));
-		allPaths.add(new Path((0.8307291666666666), (0.2726337448559671), (0.869140625), (0.31069958847736623)));
+		allPaths.add(new Path((0.517578125), (0.31584362139917693), (0.5611979166666666), (0.2736625514403292), this));
+		allPaths.add(new Path((0.5611979166666666), (0.2726337448559671), (0.6067708333333334), (0.31378600823045266), this));
+		allPaths.add(new Path((0.6067708333333334), (0.31378600823045266), (0.650390625), (0.2716049382716049), this));
+		allPaths.add(new Path((0.650390625), (0.2705761316872428), (0.6940104166666666), (0.31275720164609055), this));
+		allPaths.add(new Path((0.6940104166666666), (0.3117283950617284), (0.73828125), (0.26954732510288065), this));
+		allPaths.add(new Path((0.73828125), (0.26954732510288065), (0.7825520833333334), (0.3117283950617284), this));
+		allPaths.add(new Path((0.7838541666666666), (0.3148148148148148), (0.8268229166666666), (0.2726337448559671), this));
+		allPaths.add(new Path((0.8307291666666666), (0.2726337448559671), (0.869140625), (0.31069958847736623), this));
 
 		// Row 3
-		allPaths.add(new Path((0.4700520833333333), (0.4444444444444444), (0.515625), (0.4022633744855967)));
-		allPaths.add(new Path((0.515625), (0.40329218106995884), (0.5592447916666666), (0.44238683127572015)));
-		allPaths.add(new Path((0.5592447916666666), (0.44238683127572015), (0.60546875), (0.4012345679012346)));
-		allPaths.add(new Path((0.60546875), (0.4012345679012346), (0.650390625), (0.44238683127572015)));
-		allPaths.add(new Path((0.6497395833333334), (0.4444444444444444), (0.6953125), (0.4002057613168724)));
-		allPaths.add(new Path((0.6953125), (0.4002057613168724), (0.7395833333333334), (0.43930041152263377)));
-		allPaths.add(new Path((0.7395833333333334), (0.43930041152263377), (0.783203125), (0.39609053497942387)));
-		allPaths.add(new Path((0.783203125), (0.39609053497942387), (0.8287760416666666), (0.43930041152263377)));
-		allPaths.add(new Path((0.8287760416666666), (0.43930041152263377), (0.873046875), (0.3940329218106996)));
-		allPaths.add(new Path((0.873046875), (0.3940329218106996), (0.9186197916666666), (0.43930041152263377)));
+		allPaths.add(new Path((0.4700520833333333), (0.4444444444444444), (0.515625), (0.4022633744855967), this));
+		allPaths.add(new Path((0.515625), (0.40329218106995884), (0.5592447916666666), (0.44238683127572015), this));
+		allPaths.add(new Path((0.5592447916666666), (0.44238683127572015), (0.60546875), (0.4012345679012346), this));
+		allPaths.add(new Path((0.60546875), (0.4012345679012346), (0.650390625), (0.44238683127572015), this));
+		allPaths.add(new Path((0.6497395833333334), (0.4444444444444444), (0.6953125), (0.4002057613168724), this));
+		allPaths.add(new Path((0.6953125), (0.4002057613168724), (0.7395833333333334), (0.43930041152263377), this));
+		allPaths.add(new Path((0.7395833333333334), (0.43930041152263377), (0.783203125), (0.39609053497942387), this));
+		allPaths.add(new Path((0.783203125), (0.39609053497942387), (0.8287760416666666), (0.43930041152263377), this));
+		allPaths.add(new Path((0.8287760416666666), (0.43930041152263377), (0.873046875), (0.3940329218106996), this));
+		allPaths.add(new Path((0.873046875), (0.3940329218106996), (0.9186197916666666), (0.43930041152263377), this));
 		// Row 4
-		allPaths.add(new Path((0.4700520833333333), (0.5329218106995884), (0.5123697916666666), (0.5771604938271605)));
-		allPaths.add(new Path((0.5123697916666666), (0.5771604938271605), (0.5592447916666666), (0.5318930041152263)));
-		allPaths.add(new Path((0.5592447916666666), (0.5318930041152263), (0.6028645833333334), (0.5761316872427984)));
-		allPaths.add(new Path((0.6041666666666666), (0.5740740740740741), (0.650390625), (0.5318930041152263)));
-		allPaths.add(new Path((0.650390625), (0.5318930041152263), (0.6946614583333334), (0.5740740740740741)));
-		allPaths.add(new Path((0.6946614583333334), (0.5740740740740741), (0.7408854166666666), (0.5288065843621399)));
-		allPaths.add(new Path((0.7408854166666666), (0.5288065843621399), (0.7858072916666666), (0.5699588477366255)));
-		allPaths.add(new Path((0.7858072916666666), (0.5699588477366255), (0.830078125), (0.5277777777777778)));
-		allPaths.add(new Path((0.830078125), (0.5277777777777778), (0.8763020833333334), (0.5689300411522634)));
-		allPaths.add(new Path((0.8763020833333334), (0.5689300411522634), (0.9186197916666666), (0.5277777777777778)));
+		allPaths.add(new Path((0.4700520833333333), (0.5329218106995884), (0.5123697916666666), (0.5771604938271605), this));
+		allPaths.add(new Path((0.5123697916666666), (0.5771604938271605), (0.5592447916666666), (0.5318930041152263), this));
+		allPaths.add(new Path((0.5592447916666666), (0.5318930041152263), (0.6028645833333334), (0.5761316872427984), this));
+		allPaths.add(new Path((0.6041666666666666), (0.5740740740740741), (0.650390625), (0.5318930041152263), this));
+		allPaths.add(new Path((0.650390625), (0.5318930041152263), (0.6946614583333334), (0.5740740740740741), this));
+		allPaths.add(new Path((0.6946614583333334), (0.5740740740740741), (0.7408854166666666), (0.5288065843621399), this));
+		allPaths.add(new Path((0.7408854166666666), (0.5288065843621399), (0.7858072916666666), (0.5699588477366255), this));
+		allPaths.add(new Path((0.7858072916666666), (0.5699588477366255), (0.830078125), (0.5277777777777778), this));
+		allPaths.add(new Path((0.830078125), (0.5277777777777778), (0.8763020833333334), (0.5689300411522634), this));
+		allPaths.add(new Path((0.8763020833333334), (0.5689300411522634), (0.9186197916666666), (0.5277777777777778), this));
 		// Row 5
-		allPaths.add(new Path((0.5130208333333334), (0.6676954732510288), (0.556640625), (0.7098765432098766)));
-		allPaths.add(new Path((0.556640625), (0.7098765432098766), (0.603515625), (0.6656378600823045)));
-		allPaths.add(new Path((0.603515625), (0.6656378600823045), (0.6490885416666666), (0.7098765432098766)));
-		allPaths.add(new Path((0.6490885416666666), (0.7098765432098766), (0.6953125), (0.6625514403292181)));
-		allPaths.add(new Path((0.6953125), (0.6625514403292181), (0.7421875), (0.7067901234567902)));
-		allPaths.add(new Path((0.7421875), (0.7067901234567902), (0.7884114583333334), (0.6635802469135802)));
-		allPaths.add(new Path((0.7884114583333334), (0.6635802469135802), (0.8346354166666666), (0.7067901234567902)));
-		allPaths.add(new Path((0.8346354166666666), (0.7067901234567902), (0.8782552083333334), (0.6594650205761317)));
+		allPaths.add(new Path((0.5130208333333334), (0.6676954732510288), (0.556640625), (0.7098765432098766), this));
+		allPaths.add(new Path((0.556640625), (0.7098765432098766), (0.603515625), (0.6656378600823045), this));
+		allPaths.add(new Path((0.603515625), (0.6656378600823045), (0.6490885416666666), (0.7098765432098766), this));
+		allPaths.add(new Path((0.6490885416666666), (0.7098765432098766), (0.6953125), (0.6625514403292181), this));
+		allPaths.add(new Path((0.6953125), (0.6625514403292181), (0.7421875), (0.7067901234567902), this));
+		allPaths.add(new Path((0.7421875), (0.7067901234567902), (0.7884114583333334), (0.6635802469135802), this));
+		allPaths.add(new Path((0.7884114583333334), (0.6635802469135802), (0.8346354166666666), (0.7067901234567902), this));
+		allPaths.add(new Path((0.8346354166666666), (0.7067901234567902), (0.8782552083333334), (0.6594650205761317), this));
 		// Row 6
-		allPaths.add(new Path((0.5579427083333334), (0.8045267489711934), (0.6028645833333334), (0.8477366255144033)));
-		allPaths.add(new Path((0.6028645833333334), (0.8477366255144033), (0.6510416666666666), (0.8004115226337448)));
-		allPaths.add(new Path((0.6510416666666666), (0.8004115226337448), (0.6979166666666666), (0.8467078189300411)));
-		allPaths.add(new Path((0.6979166666666666), (0.8467078189300411), (0.744140625), (0.8024691358024691)));
-		allPaths.add(new Path((0.744140625), (0.8024691358024691), (0.7903645833333334), (0.845679012345679)));
-		allPaths.add(new Path((0.7903645833333334), (0.845679012345679), (0.8359375), (0.8004115226337448)));
+		allPaths.add(new Path((0.5579427083333334), (0.8045267489711934), (0.6028645833333334), (0.8477366255144033), this));
+		allPaths.add(new Path((0.6028645833333334), (0.8477366255144033), (0.6510416666666666), (0.8004115226337448), this));
+		allPaths.add(new Path((0.6510416666666666), (0.8004115226337448), (0.6979166666666666), (0.8467078189300411), this));
+		allPaths.add(new Path((0.6979166666666666), (0.8467078189300411), (0.744140625), (0.8024691358024691), this));
+		allPaths.add(new Path((0.744140625), (0.8024691358024691), (0.7903645833333334), (0.845679012345679), this));
+		allPaths.add(new Path((0.7903645833333334), (0.845679012345679), (0.8359375), (0.8004115226337448), this));
 
 		// Vertical Paths, left to right, top to bottom
 		// Row 1
-		allPaths.add(new Path((0.5611979166666666), (0.18930041152263374), (0.5611979166666666), (0.2736625514403292)));
-		allPaths.add(new Path((0.650390625), (0.18621399176954734), (0.6510416666666666), (0.2705761316872428)));
+		allPaths.add(new Path((0.5611979166666666), (0.18930041152263374), (0.5611979166666666), (0.2736625514403292), this));
+		allPaths.add(new Path((0.650390625), (0.18621399176954734), (0.6510416666666666), (0.2705761316872428), this));
 		allPaths.add(
-				new Path((0.7369791666666666), (0.18415637860082304), (0.7369791666666666), (0.26954732510288065)));
+				new Path((0.7369791666666666), (0.18415637860082304), (0.7369791666666666), (0.26954732510288065), this));
 		allPaths.add(
-				new Path((0.8235677083333334), (0.18518518518518517), (0.8255208333333334), (0.26440329218106995)));
+				new Path((0.8235677083333334), (0.18518518518518517), (0.8255208333333334), (0.26440329218106995), this));
 		// Row 2
-		allPaths.add(new Path((0.5162760416666666), (0.31893004115226337), (0.5162760416666666), (0.3991769547325103)));
-		allPaths.add(new Path((0.6061197916666666), (0.3117283950617284), (0.6061197916666666), (0.3991769547325103)));
-		allPaths.add(new Path((0.6946614583333334), (0.31069958847736623), (0.6953125), (0.3991769547325103)));
-		allPaths.add(new Path((0.78125), (0.30864197530864196), (0.7825520833333334), (0.39300411522633744)));
-		allPaths.add(new Path((0.8697916666666666), (0.30761316872427985), (0.873046875), (0.3950617283950617)));
+		allPaths.add(new Path((0.5162760416666666), (0.31893004115226337), (0.5162760416666666), (0.3991769547325103), this));
+		allPaths.add(new Path((0.6061197916666666), (0.3117283950617284), (0.6061197916666666), (0.3991769547325103), this));
+		allPaths.add(new Path((0.6946614583333334), (0.31069958847736623), (0.6953125), (0.3991769547325103), this));
+		allPaths.add(new Path((0.78125), (0.30864197530864196), (0.7825520833333334), (0.39300411522633744), this));
+		allPaths.add(new Path((0.8697916666666666), (0.30761316872427985), (0.873046875), (0.3950617283950617), this));
 		// Row 3
-		allPaths.add(new Path((0.4694010416666667), (0.44650205761316875), (0.4694010416666667), (0.5339506172839507)));
-		allPaths.add(new Path((0.5598958333333334), (0.44238683127572015), (0.5592447916666666), (0.5288065843621399)));
-		allPaths.add(new Path((0.650390625), (0.44135802469135804), (0.6510416666666666), (0.5308641975308642)));
-		allPaths.add(new Path((0.7395833333333334), (0.4403292181069959), (0.7421875), (0.5288065843621399)));
-		allPaths.add(new Path((0.8287760416666666), (0.43930041152263377), (0.8307291666666666), (0.5267489711934157)));
-		allPaths.add(new Path((0.91796875), (0.43930041152263377), (0.9192708333333334), (0.522633744855967)));
+		allPaths.add(new Path((0.4694010416666667), (0.44650205761316875), (0.4694010416666667), (0.5339506172839507), this));
+		allPaths.add(new Path((0.5598958333333334), (0.44238683127572015), (0.5592447916666666), (0.5288065843621399), this));
+		allPaths.add(new Path((0.650390625), (0.44135802469135804), (0.6510416666666666), (0.5308641975308642), this));
+		allPaths.add(new Path((0.7395833333333334), (0.4403292181069959), (0.7421875), (0.5288065843621399), this));
+		allPaths.add(new Path((0.8287760416666666), (0.43930041152263377), (0.8307291666666666), (0.5267489711934157), this));
+		allPaths.add(new Path((0.91796875), (0.43930041152263377), (0.9192708333333334), (0.522633744855967), this));
 		// Row 4
-		allPaths.add(new Path((0.513671875), (0.5771604938271605), (0.5130208333333334), (0.6656378600823045)));
-		allPaths.add(new Path((0.603515625), (0.5740740740740741), (0.6041666666666666), (0.6646090534979424)));
-		allPaths.add(new Path((0.6959635416666666), (0.5740740740740741), (0.6966145833333334), (0.6625514403292181)));
-		allPaths.add(new Path((0.787109375), (0.5699588477366255), (0.7877604166666666), (0.661522633744856)));
-		allPaths.add(new Path((0.8756510416666666), (0.5689300411522634), (0.87890625), (0.6563786008230452)));
+		allPaths.add(new Path((0.513671875), (0.5771604938271605), (0.5130208333333334), (0.6656378600823045), this));
+		allPaths.add(new Path((0.603515625), (0.5740740740740741), (0.6041666666666666), (0.6646090534979424), this));
+		allPaths.add(new Path((0.6959635416666666), (0.5740740740740741), (0.6966145833333334), (0.6625514403292181), this));
+		allPaths.add(new Path((0.787109375), (0.5699588477366255), (0.7877604166666666), (0.661522633744856), this));
+		allPaths.add(new Path((0.8756510416666666), (0.5689300411522634), (0.87890625), (0.6563786008230452), this));
 		// Row 5
-		allPaths.add(new Path((0.5579427083333334), (0.7129629629629629), (0.5579427083333334), (0.8004115226337448)));
-		allPaths.add(new Path((0.6516927083333334), (0.7088477366255144), (0.6510416666666666), (0.801440329218107)));
-		allPaths.add(new Path((0.7421875), (0.7078189300411523), (0.7447916666666666), (0.7993827160493827)));
-		allPaths.add(new Path((0.8333333333333334), (0.7078189300411523), (0.833984375), (0.7973251028806584)));
+		allPaths.add(new Path((0.5579427083333334), (0.7129629629629629), (0.5579427083333334), (0.8004115226337448), this));
+		allPaths.add(new Path((0.6516927083333334), (0.7088477366255144), (0.6510416666666666), (0.801440329218107), this));
+		allPaths.add(new Path((0.7421875), (0.7078189300411523), (0.7447916666666666), (0.7993827160493827), this));
+		allPaths.add(new Path((0.8333333333333334), (0.7078189300411523), (0.833984375), (0.7973251028806584), this));
 
 		for (int i = 0; i < allJoints.size(); i++) {
 			allJoints.get(i).setAdjacent();
@@ -491,166 +491,8 @@ public class GameBoard implements Serializable {
 
 	}
 
-	/*
-	 * public boolean isJointSelect(double x, double y) { // TODO Auto-generated
-	 * method stub
-	 * 
-	 * for(int i = 0; i < GameBoard.allJoints.size(); i++){//Add all the joints
-	 * corresponding to this hex double dist = Math.sqrt((x -
-	 * GameBoard.allJoints.get(i).xLoc)*(x - GameBoard.allJoints.get(i).xLoc)
-	 * +(y - GameBoard.allJoints.get(i).yLoc)*(y -
-	 * GameBoard.allJoints.get(i).yLoc));
-	 * 
-	 * 
-	 * if(dist < .02){//theoretically should only happen once per location
-	 * if(!UserInterface.selectedJoints.contains(i))
-	 * UserInterface.selectedJoints.add(i);//Adds the UserInteface arraylist
-	 * joint position else{ UserInterface.selectedJoints.remove(i); } return
-	 * true; }
-	 * 
-	 * 
-	 * 
-	 * 
-	 * }
-	 * 
-	 * return false;
-	 * 
-	 * }
-	 */
+	
 
-	/*
-	 * public String getAction(HashSet<Integer> selectedJoints, int
-	 * playerCardSelect, int cardSelect) {
-	 * 
-	 * String buttonString = "End Turn";
-	 * 
-	 * 
-	 * if(selectedJoints.isEmpty()){ buttonString = getTradeWithBank(
-	 * playerCardSelect, cardSelect); if(!buttonString.equals("End Turn")){
-	 * return buttonString; } } else{ buttonString =
-	 * getPlaceRobber(selectedJoints);
-	 * 
-	 * if(!buttonString.equals("End Turn")){ return buttonString; }
-	 * 
-	 * buttonString = getPlacePath(selectedJoints);
-	 * 
-	 * if(!buttonString.equals("End Turn")){ return buttonString; }
-	 * 
-	 * 
-	 * 
-	 * if(selectedJoints.size() != 1){ return "End Turn"; }
-	 * 
-	 * buttonString = getPlaceSettlementOrCity(selectedJoints);
-	 * 
-	 * if(!buttonString.equals("End Turn")){ return buttonString; }
-	 * 
-	 * 
-	 * }
-	 * 
-	 * 
-	 * return buttonString; }
-	 * 
-	 */
-	/*
-	 * public String getAction(HashSet<Integer> selectedJoints, int sheep, int
-	 * wheat, int wood, int stone, int brick, int cardSelect) {
-	 * 
-	 * 
-	 * int sheepCount = 0; int wheatCount = 0; int woodCount = 0; int stoneCount
-	 * = 0; int brickCount = 0;
-	 * 
-	 * 
-	 * for(int i = 0; i < allPlayers.get(player).cards.size(); i++){
-	 * if(allPlayers.get(player).cards.get(i) == ResourceCardType.SHEEPRC)
-	 * sheepCount++;
-	 * 
-	 * if(allPlayers.get(player).cards.get(i) == ResourceCardType.BRICKRC)
-	 * brickCount++;
-	 * 
-	 * if(allPlayers.get(player).cards.get(i) == ResourceCardType.FORESTRC)
-	 * woodCount++;
-	 * 
-	 * if(allPlayers.get(player).cards.get(i) == ResourceCardType.STONERC)
-	 * stoneCount++;
-	 * 
-	 * if(allPlayers.get(player).cards.get(i) == ResourceCardType.WHEATRC)
-	 * wheatCount++;
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * if(!selectedJoints.isEmpty()){
-	 * 
-	 * for(int i = 0; i < allHexes.size(); i++){
-	 * if(allHexes.get(i).joints.equals(selectedJoints)){//Need to add more
-	 * conditions and actions return "Select Hex";//Can return after finding the
-	 * right thing } } for(int i = 0; i < allPaths.size(); i++){
-	 * if(allPaths.get(i).joints.equals(selectedJoints)){//Need to add more
-	 * conditions and actions if(isGoodPathPlacement(i)){ return
-	 * "Place Path";//Can return after finding the right thing
-	 * 
-	 * }else { return "End Turn"; } } }
-	 * 
-	 * if(selectedJoints.size()!=1){//Check and make sure only one left return
-	 * "End Turn"; }
-	 * 
-	 * 
-	 * 
-	 * for(int i = 0; i < allJoints.size(); i++){//houses
-	 * 
-	 * if(selectedJoints.contains(i)){//Need to add more conditions and actions
-	 * if(isGoodHousePlacement(i)){ return "Place House"; } else{ return
-	 * "End Turn";}
-	 * 
-	 * }
-	 * 
-	 * 
-	 * }
-	 * 
-	 * 
-	 * return "End Turn";} else{
-	 * 
-	 * if(sheepCount >= sheep&& woodCount >= wood&& wheatCount >= wheat &&
-	 * stoneCount >= stone &&brickCount >= brick){ if(sheep + wood + wheat +
-	 * stone + brick == 4){
-	 * 
-	 * if(cardSelect == 1 ){ return "Trade for Sheep"; } else if(cardSelect ==
-	 * 2){ return "Trade for Wheat"; } else if(cardSelect == 3){ return
-	 * "Trade for Wood"; } else if(cardSelect == 4){ return "Trade for Stone"; }
-	 * else if(cardSelect == 5){ return "Trade for Brick"; } else{ return
-	 * "End Turn"; }
-	 * 
-	 * 
-	 * 
-	 * } else{ return "End Turn";
-	 * 
-	 * 
-	 * 
-	 * } } else{
-	 * 
-	 * return "End Turn"; }
-	 * 
-	 * 
-	 * } }
-	 */
-
-	/*
-	 * public void doAction(HashSet<Integer> selectedJoints, int sheep, int
-	 * wheat, int wood, int stone, int brick, int cardSelect) {
-	 * 
-	 * 
-	 * if(selectedJoints.isEmpty()){ //if(tradeWithBank( sheep, wood, wheat,
-	 * stone, brick, cardSelect)){ return; //} } else{
-	 * if(placeRobber(selectedJoints)){ return; } else
-	 * if(placePath(selectedJoints)){ return; } else if(selectedJoints.size() !=
-	 * 1){ return; } else if(placeSettlementOrCity(selectedJoints)){ return; } }
-	 * 
-	 * 
-	 * }
-	 */
 
 	public String getPlacePath(HashSet<Integer> selectedJoints) {
 		// TODO Auto-generated method stub

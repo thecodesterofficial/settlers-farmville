@@ -17,21 +17,21 @@ public class Joint implements Serializable {
 	public double size = .03;
 	ArrayList<Joint> adjacent = new ArrayList<Joint>();
 	public boolean city = false;
-
+    private GameBoard board;
 	public void setAdjacent() {
 
 		int search = -1;
 
-		for (int i = 0; i < GameBoard.allJoints.size(); i++) {
-			if (GameBoard.allJoints.get(i).equals(this))
+		for (int i = 0; i < board.allJoints.size(); i++) {
+			if (board.allJoints.get(i).equals(this))
 				search = i;
 		}
 
-		for (int i = 0; i < GameBoard.allPaths.size(); i++) {
-			if (GameBoard.allPaths.get(i).joints.contains(search)) {
-				for (Integer num : GameBoard.allPaths.get(i).joints) {
-					if (!GameBoard.allJoints.get(num).equals(this))
-						adjacent.add(GameBoard.allJoints.get(num));
+		for (int i = 0; i < board.allPaths.size(); i++) {
+			if (board.allPaths.get(i).joints.contains(search)) {
+				for (Integer num : board.allPaths.get(i).joints) {
+					if (!board.allJoints.get(num).equals(this))
+						adjacent.add(board.allJoints.get(num));
 				}
 
 			}
@@ -47,9 +47,10 @@ public class Joint implements Serializable {
 		 */
 	}
 
-	public Joint(double xLoc, double yLoc) {
+	public Joint(double xLoc, double yLoc, GameBoard board) {
 		this.xLoc = xLoc;
 		this.yLoc = yLoc;
+		this.board = board;
 	}
 
 	/*

@@ -23,15 +23,17 @@ HashSet<Integer> joints = new HashSet<Integer>();
 
 
 public Hex(){wasCreated = false;}
-	
-	public Hex(	double centerX, double centerY){
-		hexType = GameBoard.hexInitArray.remove(0);
+	GameBoard board;
+	public Hex(	double centerX, double centerY, GameBoard board){
+		//hexType = GameBoard.hexInitArray.remove(0);
+		this.board = board;
+		
 		this.centerX = centerX;
 		this.centerY = centerY;
 		
-		for(int i = 0; i < GameBoard.allJoints.size(); i++){//Add all the joints corresponding to this hex
-			double dist = Math.sqrt((centerX - GameBoard.allJoints.get(i).xLoc)*(centerX - GameBoard.allJoints.get(i).xLoc)
-					+(centerY - GameBoard.allJoints.get(i).yLoc)*(centerY - GameBoard.allJoints.get(i).yLoc));
+		for(int i = 0; i < board.allJoints.size(); i++){//Add all the joints corresponding to this hex
+			double dist = Math.sqrt((centerX - board.allJoints.get(i).xLoc)*(centerX - board.allJoints.get(i).xLoc)
+					+(centerY - board.allJoints.get(i).yLoc)*(centerY - board.allJoints.get(i).yLoc));
 			
 			if(dist < .1){
 				joints.add(i);//Adds the arraylist position of the joint(So we don't need to deal with serialization of every object)

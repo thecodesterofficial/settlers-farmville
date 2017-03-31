@@ -11,7 +11,7 @@ public class CatanServerManager {
 	private static CatanServerManager instance;
 	private ServerSocket socket;
     private CatanServerManager() {
-    	
+    	board = new GameBoard();
     }
     public static CatanServerManager instance()
     {
@@ -47,7 +47,7 @@ public class CatanServerManager {
     public void StartGame()
     {
     	ConnectionManager.instance().Dispatch("game init");
-    	board = new GameBoard();
+    	
     	List<Hex> hexes = board.allHexes;
     	for(int i = 0; i < hexes.size(); i++)
     	{

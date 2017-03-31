@@ -386,12 +386,12 @@ public class UserInterface extends JPanel {
 	}
 
 	private boolean isJointSelected(double x, double y) {
-		for (int i = 0; i < GameBoard.allJoints.size(); i++) {// Add all the
+		for (int i = 0; i < gameBoard.allJoints.size(); i++) {// Add all the
 																// joints
 																// corresponding
 																// to this hex
-			double dist = Math.sqrt((x - GameBoard.allJoints.get(i).xLoc) * (x - GameBoard.allJoints.get(i).xLoc)
-					+ (y - GameBoard.allJoints.get(i).yLoc) * (y - GameBoard.allJoints.get(i).yLoc));
+			double dist = Math.sqrt((x - gameBoard.allJoints.get(i).xLoc) * (x - gameBoard.allJoints.get(i).xLoc)
+					+ (y - gameBoard.allJoints.get(i).yLoc) * (y - gameBoard.allJoints.get(i).yLoc));
 
 			if (dist < .02) {// theoretically should only happen once per
 								// location

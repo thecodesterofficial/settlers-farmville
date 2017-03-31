@@ -1,8 +1,12 @@
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+
+import core.GameBoard;
+import core.Player;
 
 public class CatanServer extends Thread {
 	private String username;
@@ -10,15 +14,13 @@ public class CatanServer extends Thread {
 	private Socket connection;
 	PrintWriter out;
 	BufferedReader in;
-	CatanServerManager manager;
-	public CatanServer( Socket connection , int id, CatanServerManager manager ) throws IOException {
+	public CatanServer( Socket connection , int id) throws IOException {
         this.id = id;
         this.connection = connection;
-        this.manager = manager;
         out = new PrintWriter(this.connection.getOutputStream(), true);
         in =  new BufferedReader(new InputStreamReader(this.connection.getInputStream()));
         start();
-    }
+	}
 
     @Override
     public void run() {
@@ -51,7 +53,7 @@ public class CatanServer extends Thread {
     private void rollDice()
     {
     	//if it is this players turn roll the dice and dispatch that to every one
-    	manager.Dispatch("roll dice 2");
+    	ConnectionManager.instance().Dispatch("roll dice 2");
     }
     public void Send(String message)
     {
@@ -65,9 +67,19 @@ public class CatanServer extends Thread {
     	if(message.length == 2)
     	{
     		this.username = message[1];
-    		System.out.println("Identified as " + this.username);
+    		
+    		
+    		
     		out.println("connect good");
-    		manager.NewPlayer(this.username);
+    		GameBoard board = CatanServerManager.instance().GetGameBoard();
+    		for(Player player : board.allPlayers)
+    		{
+    			Send("player new " + player.username); // Tell New player about current players
+    			
+    		}
+    		board.allPlayers.add(new Player(Color.red, this.username));
+    		
+    		CatanServerManager.instance().NewPlayer(this.username);
     	}
     	else
     	{
@@ -81,7 +93,7 @@ public class CatanServer extends Thread {
     	{
     		if(message[1].equals("start"))
     		{
-    			manager.StartGame();
+    			CatanServerManager.instance().StartGame();
     		}
     		
     	}

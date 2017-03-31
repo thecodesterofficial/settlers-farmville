@@ -54,6 +54,7 @@ public class CatanServerManager {
     		Hex hex = hexes.get(i);
     		ConnectionManager.instance().Dispatch("game init hex " + i + " " + hex.GetHexType() + " " + hex.number);
     	}
+    	ConnectionManager.instance().Dispatch("game init robber " + board.rob.location);
     	ConnectionManager.instance().Dispatch("game start");
     }
 

@@ -67,6 +67,10 @@ public class CatanServer extends Thread {
     	if(message.length == 2)
     	{
     		this.username = message[1];
+    		
+    		
+    		
+    		out.println("connect good");
     		GameBoard board = CatanServerManager.instance().GetGameBoard();
     		for(Player player : board.allPlayers)
     		{
@@ -74,7 +78,7 @@ public class CatanServer extends Thread {
     			
     		}
     		board.allPlayers.add(new Player(Color.red, this.username));
-    		out.println("connect good");
+    		
     		CatanServerManager.instance().NewPlayer(this.username);
     	}
     	else

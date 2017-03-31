@@ -86,6 +86,11 @@ public class ServerComm extends Thread {
 		}
 	}
 	
+	public void sendMessage(String message)
+	{
+		out.println(message);
+	}
+	
 	@Override
 	public void run() {
 		while (!this.interrupted()) {

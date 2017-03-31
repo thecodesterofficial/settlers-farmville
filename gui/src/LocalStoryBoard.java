@@ -78,7 +78,14 @@ public class LocalStoryBoard {
 		if (server) { // Will make this prettier later. 
 			String ip = JOptionPane.showInputDialog("What is the ip of the server?");
 			String username = JOptionPane.showInputDialog("What is your username?");
+			
 			ServerComm comm = new ServerComm(ip, 9534, username, game);
+			int dialogResult = JOptionPane.showConfirmDialog (null, "Let me know when you want to start game...");
+			if(dialogResult == JOptionPane.YES_OPTION){
+				comm.sendMessage("start game");
+				UserInterface local = new UserInterface(game);
+				local.runInterface();
+			}
 		}
 		else
 		{
@@ -98,8 +105,7 @@ public class LocalStoryBoard {
 		//game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
 		//game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
 		//game.allPlayers.get(0).cards.add(ResourceCardType.BRICKRC);
-		UserInterface local = new UserInterface(game);
-		local.runInterface();
+		
 	}
 
 }

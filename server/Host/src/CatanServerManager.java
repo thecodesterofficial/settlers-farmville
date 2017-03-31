@@ -57,5 +57,9 @@ public class CatanServerManager {
     	ConnectionManager.instance().Dispatch("game init robber " + board.rob.location);
     	ConnectionManager.instance().Dispatch("game start");
     }
+    public GameBoard GetGameBoard()
+    {
+    	return this.board;
+    }
 
 }

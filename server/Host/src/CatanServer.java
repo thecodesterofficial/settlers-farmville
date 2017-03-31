@@ -1,8 +1,12 @@
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+
+import core.GameBoard;
+import core.Player;
 
 public class CatanServer extends Thread {
 	private String username;
@@ -63,7 +67,13 @@ public class CatanServer extends Thread {
     	if(message.length == 2)
     	{
     		this.username = message[1];
-    		
+    		GameBoard board = CatanServerManager.instance().GetGameBoard();
+    		for(Player player : board.allPlayers)
+    		{
+    			Send("player new " + player.username); // Tell New player about current players
+    			
+    		}
+    		board.allPlayers.add(new Player(Color.red, this.username));
     		out.println("connect good");
     		CatanServerManager.instance().NewPlayer(this.username);
     	}

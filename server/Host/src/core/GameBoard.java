@@ -344,7 +344,7 @@ public class GameBoard implements Serializable {
 		// Patrick put all the constructors below this comment
 
 		InitJoints();
-
+		
 		// Tiles from left to right, top to bottom
 		// Row 1
 		allHexes.add(new Hex((0.607421875), (0.2345679012345679), this));

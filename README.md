@@ -2,14 +2,15 @@
 
 The following is a project for our senior capstone course. 
 
-In order to start using this, you must have eclipse and JAVA neon installed.
+In order to start using this, you must have eclipse and Java jdk install
 
 Next, create a branch for you to develop on. My recommendation would be to name your branch DEV-XX where XX are your first and last initials.
 
 Run the following commands to get the code on your computer:
 
-git clone https://github.com/thecodesterofficial/settlers-farmville.git
-git checkout DEV-XX
+`git clone https://github.com/thecodesterofficial/settlers-farmville.git
+
+git checkout DEV-XX`
 
 Once the project is on your computer, pull the project into eclipse via file -> open projects from file system. 
 
@@ -25,31 +26,33 @@ You will want to launch the server first and then the GUI.
 
 After you have made changes to the project, you can commit them by running the following commands.
 
-git add .
+`git add .
+
 git status 
+
 git commit -m "My message here"
-git push
+
+git push`
 
 (Running git status will allow you to see if something looks weird.)
 
 When your code is ready to by push into the main project simply submit a pull request. 
 
-##Comamnds from server to client
+## Comamnds from server to client
 
-###Game Commands
-game init hex <>
-game init robber <location>
-game new player <username>
+### Game Commanawefawfasdfasdfasdfasdfasdfds
+game init h
+game init robber [location]
+game new player [ussername]
 game start
 
-###Connect Commands
+### Connect Commands
 connect good
-connect bad <error>
+connect bad [error]
 
-##Commands from client to server
-###Game Commands
+## Commands from client to server
+### Game Commands
 game start
-###Connect commands
-connect <username>
-
+### Connect commands
+connect [username]
 

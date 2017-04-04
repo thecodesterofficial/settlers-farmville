@@ -1,4 +1,5 @@
 package core;
+
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
@@ -17,17 +18,15 @@ public double centerY;
 public boolean wasCreated = true;
 public int number;
 public Color color = Color.red;
-HexType hexType;
-HashSet<Integer> joints = new HashSet<Integer>();
+public HexType hexType;
+public HashSet<Integer> joints = new HashSet<Integer>();
+GameBoard board;
 
 
-
-public Hex(){wasCreated = false;}
-	GameBoard board;
-	public Hex(	double centerX, double centerY, GameBoard board){
+        public Hex(){wasCreated = false;}
+	public Hex(	double centerX, double centerY, GameBoard gameBoard){
 		//hexType = GameBoard.hexInitArray.remove(0);
-		this.board = board;
-		
+                this.board = gameBoard;
 		this.centerX = centerX;
 		this.centerY = centerY;
 		
@@ -58,13 +57,32 @@ public Hex(){wasCreated = false;}
 	}
 		
 		
-	System.out.println("joints size: "+joints.size());
 	
 	}
+/*
+	public BufferedImage getImage() {
+		// TODO Auto-generated method stub
+		if(hexType == HexType.BRICK)
+			return UserInterface.brickImage;
+		else if(hexType == HexType.LUMBER)
+			return UserInterface.forestImage;
+		else if(hexType == HexType.SAND)
+			return UserInterface.sandImage;
+		else if(hexType == HexType.SHEEP)
+			return UserInterface.sheepImage;
+		else if(hexType == HexType.STONE)
+			return UserInterface.stoneImage;
+		else if(hexType == HexType.WHEAT)
+			return UserInterface.wheatImage;
+		else 
+			return null;
+		
+		
+	}
+*/	
+
 	public HexType GetHexType()
 	{
 		return this.hexType;
-	}
-	
-
+        }
 }

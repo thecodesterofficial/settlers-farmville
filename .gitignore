@@ -11,19 +11,27 @@
 # correct.
 #                                            --Mathew Roark
 
+
+##
+# Custom lines based on our use cases
+##
+
+*.metadata
+*.class
+*/bin/
+*/tmp/
+
 ###########################################################
 # The following is from Eclipse.gitignore
 ###########################################################
 
 .metadata
-gui/.metadata
 bin/
 tmp/
 *.tmp
 *.bak
 *.swp
 *~.nib
-*.class
 local.properties
 .settings/
 .loadpath

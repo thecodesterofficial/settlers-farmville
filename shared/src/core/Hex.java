@@ -13,13 +13,13 @@ public class Hex implements Serializable{
 	 * 
 	 */
 private static final long serialVersionUID = 1L;
-double centerX;
-double centerY;
-boolean wasCreated = true;
-int number;
-Color color = Color.red;
-HexType hexType;
-HashSet<Integer> joints = new HashSet<Integer>();
+public double centerX;
+public double centerY;
+public boolean wasCreated = true;
+public int number;
+public Color color = Color.red;
+public HexType hexType;
+public HashSet<Integer> joints = new HashSet<Integer>();
 GameBoard board;
 
 

@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import core.GameBoard;
+
 
 public class NeuralNet {
 	

@@ -2,6 +2,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
+import core.GameBoard;
+import core.Player;
+
 
 public class Simulator {
 	

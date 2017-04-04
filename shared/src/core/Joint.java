@@ -14,10 +14,10 @@ public class Joint implements Serializable{
 	private static final long serialVersionUID = 1L;
 	public double xLoc;
 	public double yLoc;
-	Color color = new Color(237,201,175);
+	public Color color = new Color(237,201,175);
 	public double size = .03;
 	ArrayList<Joint> adjacent = new ArrayList<Joint>();
-	boolean city = false;
+	public boolean city = false;
 	private GameBoard board;
 	public void setAdjacent(){
 		

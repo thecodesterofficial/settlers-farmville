@@ -445,19 +445,29 @@ public class UserInterface extends JPanel {
 									&& yClick > (int) (screenHeight * .8)) {
 
 								if (buttonAction.equals("Place Settlement")) {
-									gameBoard.placeSettlementOrCity(selectedJoints);
-									
-									// TODO Communicate to Server
+									int settlementIndex = gameBoard.getSettlementIndex(selectedJoints);
+									if(gameBoard.placeSettlement(settlementIndex))
+									{
+										// Also communicate settlement placement to server. (Cody)
+									}
+								
 								} else if (buttonAction.equals("Place Road")) {
-									gameBoard.placePath(selectedJoints);
-									// TODO Communicate to server
+									int pathIndex = gameBoard.getPathIndex(selectedJoints);
+									if(gameBoard.placePath(pathIndex))
+									{
+										// Communicate to server. (Daniel)
+									}
 								} else if (buttonAction.equals("Move Robber")) {
-									gameBoard.placeRobber(selectedJoints);
-									// TODO Communicate to server
+									int robberIndex = gameBoard.getRobberIndex(selectedJoints);
+									if(gameBoard.placeRobber(robberIndex))
+									{
+									   // Communicate to server. (Asa)
+									}
+									
 								} else {
 
 									if (gameBoard.nextTurn()) {
-										// gameBoard.nextTurn();
+										// gameBoard.nextTurn(); (Matt)
 										// TODO Communicate to server
 									} else {
 										JOptionPane.showMessageDialog(null,

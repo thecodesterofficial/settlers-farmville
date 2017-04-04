@@ -40,7 +40,7 @@ public class GameBoard implements Serializable {
 		if (randomize) {
 			this.scrambleHexes();
 			this.scrambleNumbers();
-			this.placeRobberOnSand();
+		//	this.placeRobberOnSand();
 		}
 		/**
 		 * XXX for(int i = 0; i < allJoints.size();i++){
@@ -729,7 +729,15 @@ public class GameBoard implements Serializable {
 		return false;
 
 	}
-
+    public int getPathIndex(HashSet<Integer> selectedJoints)
+    {
+    	for (int i = 0; i < allPaths.size(); i++) {
+			if (allPaths.get(i).joints.equals(selectedJoints)) {
+				return i;
+			}
+		}
+    	return -1;
+    }
 	public boolean placePath(HashSet<Integer> selectedJoints) {
 		// TODO Auto-generated method stub
 
@@ -969,7 +977,17 @@ public class GameBoard implements Serializable {
 
 		}
 	}
+    public int getSettlementIndex(HashSet<Integer> selectedJoints)
+    {
+    	for (int i = 0; i < allJoints.size(); i++) {// houses
 
+			if (selectedJoints.contains(i)) {// Need to add more conditions
+												// and actions
+				return i;
+			}
+		}
+    	return -1;
+    }
 	public boolean placeSettlement(HashSet<Integer> selectedJoints) {
 		// TODO Auto-generated method stub
 
@@ -1003,7 +1021,7 @@ public class GameBoard implements Serializable {
 
 				if (selectedJoints.contains(i)) {// Need to add more conditions
 													// and actions
-					if (isGoodHousePlacement(i) && !haveHouse()) {
+					if (isGoodHousePlacement(i) && !CurrentPlayerHasHouse()) {
 						allJoints.get(i).color = allPlayers.get(player).color;
 					}
 
@@ -1016,7 +1034,7 @@ public class GameBoard implements Serializable {
 
 				if (selectedJoints.contains(i)) {// Need to add more conditions
 													// and actions
-					if (isGoodHousePlacement(i) && !have2House()) {
+					if (isGoodHousePlacement(i) && !CurrentPlayerHasTwoHouses()) {
 						allJoints.get(i).color = allPlayers.get(player).color;
 					}
 
@@ -1056,7 +1074,15 @@ public class GameBoard implements Serializable {
 
 		return false;
 	}
-
+	public int getRobberIndex(HashSet<Integer> selectedJoints)
+	{
+		for (int i = 0; i < allHexes.size(); i++) {
+			if (allHexes.get(i).joints.equals(selectedJoints)) {// Need to add
+				return i;
+			}
+		}
+		return -1;
+	}
 	public boolean placeRobber(int index) {
 		// TODO Auto-generated method stub
 
@@ -1097,9 +1123,9 @@ public class GameBoard implements Serializable {
 	// Gameplay state methods
 	public boolean nextTurn() {
 
-		if (round == 1 && (!haveRoad() || !haveHouse())) {
+		if (round == 1 && (!CurrentPlayerHasRoad() || !CurrentPlayerHasHouse())) {
 			return false;
-		} else if (round == 2 && (!have2Road() || !have2House())) {
+		} else if (round == 2 && (!CurrentPlayerHasTwoRoads() || !CurrentPlayerHasTwoHouses())) {
 			return false;
 		}
 
@@ -2088,7 +2114,7 @@ public class GameBoard implements Serializable {
 		if (round == 1) {
 
 			// Need to add more conditions and actions
-			if (isGoodPathPlacement(index) && !haveRoad()) {
+			if (isGoodPathPlacement(index) && !CurrentPlayerHasRoad()) {
 				return "Path " + index;// Can return after finding the right
 										// thing
 
@@ -2097,7 +2123,7 @@ public class GameBoard implements Serializable {
 		} else if (round == 2) {
 
 			// add more conditions and actions
-			if (isGoodPathPlacement(index) && !have2Road()
+			if (isGoodPathPlacement(index) && !CurrentPlayerHasTwoRoads()
 					&& settlementDoesntHaveRoad(index)) {
 				return "Path " + index;// Can return after finding the right
 										// thing
@@ -2181,13 +2207,13 @@ public class GameBoard implements Serializable {
 
 		if (round == 1) {
 
-			if (isGoodHousePlacement(index) && !haveHouse()) {
+			if (isGoodHousePlacement(index) && !CurrentPlayerHasHouse()) {
 				return "Settlement " + index;
 			}
 
 		} else if (round == 2) {
 
-			if (isGoodHousePlacement(index) && !have2House()) {
+			if (isGoodHousePlacement(index) && !CurrentPlayerHasTwoHouses()) {
 				return "Settlement " + index;
 			}
 

@@ -122,10 +122,11 @@ public class UserInterface extends JPanel {
 			return null;
 	}
 	// paint
-
-	public UserInterface(GameBoard game) {
+	static ServerComm comm;
+	public UserInterface(GameBoard game, ServerComm commToServer) {
 		// TODO Auto-generated constructor stub
 		gameBoard = game;
+		comm = commToServer;
 		
 	}
 
@@ -264,7 +265,14 @@ public class UserInterface extends JPanel {
 			}
 		}
 	}
-
+	private void DrawActionButton(Graphics2D g2)
+	{
+		g2.setColor(Color.cyan);
+    	g2.fill3DRect(0, (int) (screenHeight * .8), (int) (screenWidth * .2), (int) (screenHeight * .2), true);
+    	g2.setColor(Color.black);
+    
+		g2.drawString(buttonAction, (int) (screenWidth * .02), (int) (screenHeight * .88));
+	}
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); // Paint background
@@ -291,18 +299,23 @@ public class UserInterface extends JPanel {
 			// System.out.println("DRAW BANK");
 
 		}
-
-		g2.setColor(Color.cyan);
-		g2.fill3DRect(0, (int) (screenHeight * .8), (int) (screenWidth * .2), (int) (screenHeight * .2), true);
-		g2.setColor(Color.black);
-
 		g2.setFont(font2);
-		g2.drawString(buttonAction, (int) (screenWidth * .02), (int) (screenHeight * .88));
-
+		if(server && gameBoard.isCurrentPlayer(comm.getUsername()))
+		{
+			DrawActionButton(g2);
+	    }
+		
+		g2.setColor(Color.black);
+        	
+        
+			 /*if(server && gameBoard.allPlayers.get(gameBoard.player).username == comm.getUsername())
+		        {*/
 		g2.setColor(Color.cyan);
 		g2.fill3DRect((int) (screenWidth * .2), (int) (screenHeight * .8), (int) (screenWidth * .2),
 				(int) (screenHeight * .2), true);
+		        
 		g2.setColor(Color.black);
+		
 
 		if (seeMap)
 			g2.drawString("Bank", (int) (screenWidth * .22), (int) (screenHeight * .88));
@@ -448,14 +461,15 @@ public class UserInterface extends JPanel {
 									int settlementIndex = gameBoard.getSettlementIndex(selectedJoints);
 									if(gameBoard.placeSettlement(settlementIndex))
 									{
-										// Also communicate settlement placement to server. (Cody)
+										
+										comm.placeSettlement(settlementIndex);
 									}
 								
 								} else if (buttonAction.equals("Place Road")) {
 									int pathIndex = gameBoard.getPathIndex(selectedJoints);
 									if(gameBoard.placePath(pathIndex))
 									{
-										// Communicate to server. (Daniel)
+										comm.placePath(pathIndex);
 									}
 								} else if (buttonAction.equals("Move Robber")) {
 									int robberIndex = gameBoard.getRobberIndex(selectedJoints);
@@ -467,8 +481,7 @@ public class UserInterface extends JPanel {
 								} else {
 
 									if (gameBoard.nextTurn()) {
-										// gameBoard.nextTurn(); (Matt)
-										// TODO Communicate to server
+										comm.nextTurn();
 									} else {
 										JOptionPane.showMessageDialog(null,
 												"Make sure to place a settlement and a road!");

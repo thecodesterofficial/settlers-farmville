@@ -44,7 +44,8 @@ public class CatanServer extends Thread {
         	 catch(Exception e)
         	 {
         		 System.out.println(e.getStackTrace().toString());
-        		 return;        	
+        		 System.out.println(e.getMessage());
+        		       	
         	 }
              
          }
@@ -61,6 +62,23 @@ public class CatanServer extends Thread {
     	out.println(message);
     }
     
+    private Color GetNewPlayerColor()
+    {
+    	Color color = Color.red;
+	switch(CatanServerManager.instance().GetGameBoard().allPlayers.size())
+		{
+		case 0:
+			color = Color.red;
+			break;
+		case 1:
+			color = Color.blue;
+		case 2:
+			color = Color.green;
+		case 3:
+			color = Color.yellow;
+		}
+		return color;
+    }
     
     private void handleConnect(String[] message) 
     {
@@ -77,7 +95,10 @@ public class CatanServer extends Thread {
     			Send("player new " + player.username); // Tell New player about current players
     			
     		}
-    		board.allPlayers.add(new Player(Color.red, this.username));
+    		
+    		
+    		
+    		board.allPlayers.add(new Player(GetNewPlayerColor(), this.username));
     		
     		CatanServerManager.instance().NewPlayer(this.username);
     	}
@@ -101,6 +122,7 @@ public class CatanServer extends Thread {
     
     public void process( String[] message ) {
     	
+    	System.out.println("Processing Message ON SERVER");
     	if(message[0].equals("connect"))
     	{
     		handleConnect(message);
@@ -109,10 +131,40 @@ public class CatanServer extends Thread {
     	{
     		handleGameMessage(message);
     	}
+    	else if(message[0].equals("move"))
+    	{
+    		handleMove(message);
+    	}
     	
     }
 
-   
+    private void handleMove(String[] message)
+    {
+    	if(message[1].equals("settlement"))
+    	{
+    		int index = Integer.parseInt(message[2]);
+    		if(CatanServerManager.instance().GetGameBoard().placeSettlement(index))
+    		{
+    			ConnectionManager.instance().Dispatch("move settlement " + this.username + " " + index);
+    			System.out.println("Sending Settlement from server");
+    		}
+    	}
+    	else if(message[1].equals("path"))
+    	{
+    		int index = Integer.parseInt(message[2]);
+    		if(CatanServerManager.instance().GetGameBoard().placePath(index))
+    		{
+    			ConnectionManager.instance().Dispatch("move path " + this.username + " " + index);
+    		}
+    	}
+    	else if(message[1].equals("next"))
+    	{
+    		if(CatanServerManager.instance().GetGameBoard().nextTurn())
+    		{
+    			ConnectionManager.instance().Dispatch("move next");
+    		}
+    	}
+    }
     public void close() {
         try {
              this.connection.close();

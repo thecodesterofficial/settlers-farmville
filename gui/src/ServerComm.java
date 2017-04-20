@@ -16,6 +16,7 @@ public class ServerComm extends Thread {
 	BufferedReader in;
 	PrintWriter out;
     GameBoard game;
+    private String username = "";
 	public ServerComm(String ip, int port, String username, GameBoard board) {
 		this.game = board;
 		try {
@@ -23,6 +24,7 @@ public class ServerComm extends Thread {
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new PrintWriter(socket.getOutputStream(), true);
 			out.println("connect " + username);
+			this.username = username;
 			String response = in.readLine();
 			if (response.equals("connect good")) {
 				start();
@@ -36,6 +38,10 @@ public class ServerComm extends Thread {
 			System.out.println("ERROR: unable to connect to the server.");
 		}
 
+	}
+	public String getUsername()
+	{
+		return username;
 	}
 	public void processGame(String parts[])
 	{
@@ -77,13 +83,40 @@ public class ServerComm extends Thread {
 			if(parts[1].equals("new"))
 			{
 				String username = parts[2];
-				game.allPlayers.add(new Player(Color.red, username));
-				
-				for(Player p : game.allPlayers)
+				Color color = Color.red;
+				switch(game.allPlayers.size())
 				{
-					System.out.println("Player: " + p.username);
+				case 0:
+					color = Color.red;
+					break;
+				case 1:
+					color = Color.blue;
+				case 2:
+					color = Color.green;
+				case 3:
+					color = Color.yellow;
 				}
+				game.allPlayers.add(new Player(color, username));
 				
+			}
+		}
+		else if(parts[0].equals("move"))
+		{
+			if(parts[1].equals("settlement"))
+			{
+				int index = Integer.parseInt(parts[3]);
+				game.placeSettlement(index);
+				
+			}
+			else if(parts[1].equals("path"))
+			{
+				int index = Integer.parseInt(parts[3]);
+				game.placePath(index);
+				
+			}
+			else if(parts[1].equals("next"))
+			{
+				game.nextTurn();
 			}
 		}
 	}
@@ -91,6 +124,20 @@ public class ServerComm extends Thread {
 	public void sendMessage(String message)
 	{
 		out.println(message);
+	}
+	
+	
+	public void placeSettlement(int index)
+	{
+		this.sendMessage("move settlement " + index);
+	}
+	public void placePath(int index)
+	{
+		this.sendMessage("move path " + index);
+	}
+	public void nextTurn()
+	{
+		this.sendMessage("move next");
 	}
 	
 	@Override

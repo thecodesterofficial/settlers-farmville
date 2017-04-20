@@ -395,7 +395,10 @@ public class GameBoard implements Serializable {
 		}
 
 	}
-
+    public boolean isCurrentPlayer(String username)
+    {
+    	return this.allPlayers.get(player).username.equals(username);
+    }
 	public void scrambleNumbers() {
 		for (int i = 0; i < allHexes.size(); i++) {
 			if (allHexes.get(i).number != -1) {
@@ -494,7 +497,7 @@ public class GameBoard implements Serializable {
 		if (road == 1) {
 			return true;
 		}
-
+		
 		return false;
 
 	}
@@ -523,7 +526,7 @@ public class GameBoard implements Serializable {
 			if (allJoints.get(i).color.equals(allPlayers.get(player).color))
 				house++;
 		}
-
+        
 		if (house == 1) {
 			return true;
 		}

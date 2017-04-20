@@ -38,7 +38,7 @@ public class LocalStoryBoard {
 			int dialogResult = JOptionPane.showConfirmDialog (null, "Let me know when you want to start game...");
 			if(dialogResult == JOptionPane.YES_OPTION){
 				comm.sendMessage("game start");
-				UserInterface local = new UserInterface(game);
+				UserInterface local = new UserInterface(game, comm);
 				local.runInterface();
 			}
 		}

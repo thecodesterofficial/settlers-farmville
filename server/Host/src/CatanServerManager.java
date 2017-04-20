@@ -43,7 +43,7 @@ public class CatanServerManager {
     	ConnectionManager.instance().Dispatch("player new " + name);
     }
 	    
-    
+   
     public void StartGame()
     {
     	ConnectionManager.instance().Dispatch("game init");

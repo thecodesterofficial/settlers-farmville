@@ -25,11 +25,12 @@ public class CatanServer extends Thread {
     @Override
     public void run() {
          while( !this.interrupted() ) {
+        	 String data ="";
         	 try
         	 {
         		 if(in.ready())
         		 {
-        			 String data = in.readLine();
+        			 data = in.readLine();
         			 System.out.println("Read in message: " + data);
         			 String[] split = data.split(" ");
         			 if(split.length > 0)
@@ -45,17 +46,14 @@ public class CatanServer extends Thread {
         	 {
         		 System.out.println(e.getStackTrace().toString());
         		 System.out.println(e.getMessage());
+        		 System.out.println("Problem parsing " + data);
         		       	
         	 }
              
          }
     }
 
-    private void rollDice()
-    {
-    	//if it is this players turn roll the dice and dispatch that to every one
-    	ConnectionManager.instance().Dispatch("roll dice 2");
-    }
+   
     public void Send(String message)
     {
     	System.out.println("Made it to send");
@@ -161,9 +159,31 @@ public class CatanServer extends Thread {
     	{
     		if(CatanServerManager.instance().GetGameBoard().nextTurn())
     		{
-    			ConnectionManager.instance().Dispatch("move next");
+    			
+    				
+    			GameBoard board = CatanServerManager.instance().GetGameBoard();
+    			String currentPlayer = board.getCurrentPlayer().username;
+    			ConnectionManager.instance().Dispatch("move next " + currentPlayer);
+    			ConnectionManager.instance().Dispatch("move round " + board.round);
+    			if(board.round > 2)
+    			{
+    				int number = board.getDiceNumber();
+    				//System.out.println("Rolled a " + number);
+    				System.out.println("ROLLING THE DICE");
+    				try
+        			{
+    				board.rollDice(number);
+        			}
+        			catch(Exception e)
+        			{
+        				System.out.println("actually the porblem is here.");
+        			}
+    				ConnectionManager.instance().Dispatch("move dice " + number);
+    			}
+    			
     		}
     	}
+    	
     }
     public void close() {
         try {

@@ -482,6 +482,10 @@ public class UserInterface extends JPanel {
 
 									if (gameBoard.nextTurn()) {
 										comm.nextTurn();
+										if(gameBoard.round > 2)
+										{
+											
+										}
 									} else {
 										JOptionPane.showMessageDialog(null,
 												"Make sure to place a settlement and a road!");

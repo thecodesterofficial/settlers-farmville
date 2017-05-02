@@ -116,11 +116,38 @@ public class ServerComm extends Thread {
 			}
 			else if(parts[1].equals("next"))
 			{
-				game.nextTurn();
+				String username = parts[2];
+				
+				game.setCurrentPlayer(username);
+			}
+			else if(parts[1].equals("dice"))
+			{
+				int diceRoll = Integer.parseInt(parts[2]);
+				System.out.println("Dice roll " + diceRoll + " from server.");
+				game.rollDice(diceRoll);
+			}
+			else if(parts[1].equals("round"))
+			{
+				int round = Integer.parseInt(parts[2]);
+				game.round = round;
+			}
+			else if(parts[1].equals("robber"))
+			{
+				int robberIndex = Integer.parseInt(parts[2]);
+	    		game.placeRobber(robberIndex);
+			}
+			else if(parts[1].equals("trade"))
+			{
+				int playerCardSelect = Integer.parseInt(parts[2]);
+	    		int cardSelect = Integer.parseInt(parts[3]);
+	    		game.tradeWithBank(playerCardSelect, cardSelect);
 			}
 		}
 	}
-	
+	public void tradeWithBank(int playerCardSelect, int cardSelect)
+	{
+		sendMessage("move trade " + playerCardSelect + " " + cardSelect);
+	}
 	public void sendMessage(String message)
 	{
 		out.println(message);
@@ -138,6 +165,14 @@ public class ServerComm extends Thread {
 	public void nextTurn()
 	{
 		this.sendMessage("move next");
+	}
+	public void rollDice(int number)
+	{
+		this.sendMessage("move dice " + number);
+	}
+	public void placeRobber(int number)
+	{
+		this.sendMessage("move robber " + number);
 	}
 	
 	@Override

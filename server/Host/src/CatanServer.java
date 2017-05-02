@@ -25,11 +25,12 @@ public class CatanServer extends Thread {
     @Override
     public void run() {
          while( !this.interrupted() ) {
+        	 String data ="";
         	 try
         	 {
         		 if(in.ready())
         		 {
-        			 String data = in.readLine();
+        			 data = in.readLine();
         			 System.out.println("Read in message: " + data);
         			 String[] split = data.split(" ");
         			 if(split.length > 0)
@@ -45,17 +46,14 @@ public class CatanServer extends Thread {
         	 {
         		 System.out.println(e.getStackTrace().toString());
         		 System.out.println(e.getMessage());
+        		 System.out.println("Problem parsing " + data);
         		       	
         	 }
              
          }
     }
 
-    private void rollDice()
-    {
-    	//if it is this players turn roll the dice and dispatch that to every one
-    	ConnectionManager.instance().Dispatch("roll dice 2");
-    }
+   
     public void Send(String message)
     {
     	System.out.println("Made it to send");
@@ -161,8 +159,37 @@ public class CatanServer extends Thread {
     	{
     		if(CatanServerManager.instance().GetGameBoard().nextTurn())
     		{
-    			ConnectionManager.instance().Dispatch("move next");
+    			
+    				
+    			GameBoard board = CatanServerManager.instance().GetGameBoard();
+    			String currentPlayer = board.getCurrentPlayer().username;
+    			ConnectionManager.instance().Dispatch("move next " + currentPlayer);
+    			ConnectionManager.instance().Dispatch("move round " + board.round);
+    			if(board.round > 2)
+    			{
+    				int number = board.getDiceNumber();
+    				
+    				board.rollDice(number);
+        			
+    				ConnectionManager.instance().Dispatch("move dice " + number);
+    			}
+    			
     		}
+    	}
+    	else if(message[1].equals("robber"))
+    	{
+    		GameBoard board = CatanServerManager.instance().GetGameBoard();
+    		int robberIndex = Integer.parseInt(message[2]);
+    		board.placeRobber(robberIndex);
+    		ConnectionManager.instance().Dispatch("move robber " + robberIndex);
+    	}
+    	else if(message[1].equals("trade"))
+    	{
+    		int playerCardSelect = Integer.parseInt(message[2]);
+    		int cardSelect = Integer.parseInt(message[3]);
+    		GameBoard board = CatanServerManager.instance().GetGameBoard();
+    		board.tradeWithBank(playerCardSelect, cardSelect);
+    		ConnectionManager.instance().Dispatch("move trade " + playerCardSelect + " " + cardSelect);    	
     	}
     }
     public void close() {

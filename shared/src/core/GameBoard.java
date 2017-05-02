@@ -24,7 +24,7 @@ public class GameBoard implements Serializable {
 	public ArrayList<Player> allPlayers = new ArrayList<Player>();
 	public int currentRoll = -1;
 	public int round = 1;
-
+	private Random rand;
 	// public boolean seeMap = true;
 
 	// Constructors
@@ -42,14 +42,25 @@ public class GameBoard implements Serializable {
 			this.scrambleNumbers();
 		//	this.placeRobberOnSand();
 		}
-		/**
-		 * XXX for(int i = 0; i < allJoints.size();i++){
-		 * allJoints.get(i).setAdjacent(this); }
-		 * 
-		 * 
-		 * for(int i = 0; i < allHexes.size(); i++){ if(allHexes.get(i).hexType
-		 * == HexType.SAND)//Put the robber in the sand rob = new Robber(i); }
-		 **/
+		rand = new Random();
+		int max = 18;
+		int min = 0;
+		int robLocation = rand.nextInt(max - min + 1) + min;
+		rob = new Robber(robLocation);
+		Hex robHex = allHexes.get(robLocation);
+		Hex sandHex = new Hex();
+		
+		for(int i = 0; i < allHexes.size(); i++)
+		{
+			if(allHexes.get(i).hexType == HexType.SAND)
+			{
+				sandHex = allHexes.get(i);
+				break;
+			}
+		}
+		sandHex.hexType = robHex.hexType;
+		robHex.number = 7;
+		robHex.hexType = HexType.SAND;
 
 	}
 
@@ -1145,73 +1156,83 @@ public class GameBoard implements Serializable {
 		} else {
 			player++;
 		}
+		return true;
+	}
+	
+	
+	public int getDiceNumber()
+	{
+		int min = 1;
+		int max = 14;// pretty sure this is non inclusive.. could be wrong
+		
+	
+		
+			int diceNumber = rand.nextInt(max) + min;
+			return diceNumber;
+		
+	
+		
 
-		if (round > 2) {
-			int min = 1;
-			int max = 7;// pretty sure this is non inclusive.. could be wrong
-			Random rand = new Random();
-
-			currentRoll = rand.nextInt(max - min) + min
-					+ rand.nextInt(max - min) + min;
-
-			if (currentRoll == 7) {
-				// handle robber situation
-				for (int i = 0; i < allPlayers.size(); i++) {
-					if (allPlayers.get(i).cards.size() >= 7) {
-						Collections.shuffle(allPlayers.get(i).cards);
-						int amount = allPlayers.get(i).cards.size() / 2;
-						for (int x = 0; x < amount; x++) {
-							allPlayers.get(i).cards.remove(0);
-						}
+	}
+	public void rollDice(int number)
+	{
+		this.currentRoll = number;
+		if (currentRoll == 7) {
+			// handle robber situation
+			for (int i = 0; i < allPlayers.size(); i++) {
+				if (allPlayers.get(i).cards.size() >= 7) {
+					Collections.shuffle(allPlayers.get(i).cards);
+					int amount = allPlayers.get(i).cards.size() / 2;
+					for (int x = 0; x < amount; x++) {
+						allPlayers.get(i).cards.remove(0);
 					}
 				}
 			}
+		}
 
-			for (int i = 0; i < allHexes.size(); i++) {
-				if (allHexes.get(i).number == currentRoll && rob.location != i) {
-					for (Integer num : allHexes.get(i).joints) {
+		for (int i = 0; i < allHexes.size(); i++) {
+			if (allHexes.get(i).number == currentRoll && rob.location != i) {
+				for (Integer num : allHexes.get(i).joints) {
 
-						for (int y = 0; y < allPlayers.size(); y++) {
-							if (allJoints.get(num).color.equals(allPlayers
-									.get(y).color)) {
-								if (allHexes.get(i).hexType == HexType.BRICK) {
+					for (int y = 0; y < allPlayers.size(); y++) {
+						if (allJoints.get(num).color.equals(allPlayers
+								.get(y).color)) {
+							if (allHexes.get(i).hexType == HexType.BRICK) {
+								allPlayers.get(y).cards
+										.add(ResourceCardType.BRICKRC);
+								if (allJoints.get(num).city)
 									allPlayers.get(y).cards
 											.add(ResourceCardType.BRICKRC);
-									if (allJoints.get(num).city)
-										allPlayers.get(y).cards
-												.add(ResourceCardType.BRICKRC);
-								} else if (allHexes.get(i).hexType == HexType.LUMBER) {
+							} else if (allHexes.get(i).hexType == HexType.LUMBER) {
+								allPlayers.get(y).cards
+										.add(ResourceCardType.FORESTRC);
+								if (allJoints.get(num).city)
 									allPlayers.get(y).cards
 											.add(ResourceCardType.FORESTRC);
-									if (allJoints.get(num).city)
-										allPlayers.get(y).cards
-												.add(ResourceCardType.FORESTRC);
-								} else if (allHexes.get(i).hexType == HexType.SHEEP) {
+							} else if (allHexes.get(i).hexType == HexType.SHEEP) {
+								allPlayers.get(y).cards
+										.add(ResourceCardType.SHEEPRC);
+								if (allJoints.get(num).city)
 									allPlayers.get(y).cards
 											.add(ResourceCardType.SHEEPRC);
-									if (allJoints.get(num).city)
-										allPlayers.get(y).cards
-												.add(ResourceCardType.SHEEPRC);
-								} else if (allHexes.get(i).hexType == HexType.STONE) {
+							} else if (allHexes.get(i).hexType == HexType.STONE) {
+								allPlayers.get(y).cards
+										.add(ResourceCardType.STONERC);
+								if (allJoints.get(num).city)
 									allPlayers.get(y).cards
 											.add(ResourceCardType.STONERC);
-									if (allJoints.get(num).city)
-										allPlayers.get(y).cards
-												.add(ResourceCardType.STONERC);
-								} else if (allHexes.get(i).hexType == HexType.WHEAT) {
+							} else if (allHexes.get(i).hexType == HexType.WHEAT) {
+								allPlayers.get(y).cards
+										.add(ResourceCardType.WHEATRC);
+								if (allJoints.get(num).city)
 									allPlayers.get(y).cards
 											.add(ResourceCardType.WHEATRC);
-									if (allJoints.get(num).city)
-										allPlayers.get(y).cards
-												.add(ResourceCardType.WHEATRC);
-								}
 							}
 						}
 					}
 				}
 			}
 		}
-		return true;
 	}
 
 	public boolean checkGameWinner() {
@@ -2179,6 +2200,18 @@ public class GameBoard implements Serializable {
 		}
 
 		return null;
+	}
+	
+	public void setCurrentPlayer(String username)
+	{
+		for(int i = 0; i < allPlayers.size(); i++)
+		{
+			if(allPlayers.get(i).username.equals(username))
+			{
+				player = i;
+				return;
+			}
+		}
 	}
 
 	public String getSettlementAction(int index) {

@@ -21,6 +21,11 @@ public class Player {
  public Player(Color color, String username){
 	 this.color = color;
 	 this.username = username;
+	 cards.add(ResourceCardType.BRICKRC);
+	 cards.add(ResourceCardType.FORESTRC);
+	 cards.add(ResourceCardType.SHEEPRC);
+	 cards.add(ResourceCardType.STONERC);
+	 cards.add(ResourceCardType.WHEATRC);
  }
     
     

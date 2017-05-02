@@ -168,20 +168,20 @@ public class CatanServer extends Thread {
     			if(board.round > 2)
     			{
     				int number = board.getDiceNumber();
-    				//System.out.println("Rolled a " + number);
-    				System.out.println("ROLLING THE DICE");
-    				try
-        			{
+    				
     				board.rollDice(number);
-        			}
-        			catch(Exception e)
-        			{
-        				System.out.println("actually the porblem is here.");
-        			}
+        			
     				ConnectionManager.instance().Dispatch("move dice " + number);
     			}
     			
     		}
+    	}
+    	else if(message[1].equals("robber"))
+    	{
+    		GameBoard board = CatanServerManager.instance().GetGameBoard();
+    		int robberIndex = Integer.parseInt(message[2]);
+    		board.placeRobber(robberIndex);
+    		ConnectionManager.instance().Dispatch("move robber " + robberIndex);
     	}
     	
     }

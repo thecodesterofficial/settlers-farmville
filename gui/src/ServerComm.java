@@ -131,6 +131,11 @@ public class ServerComm extends Thread {
 				int round = Integer.parseInt(parts[2]);
 				game.round = round;
 			}
+			else if(parts[1].equals("robber"))
+			{
+				int robberIndex = Integer.parseInt(parts[2]);
+	    		game.placeRobber(robberIndex);
+			}
 		}
 	}
 	
@@ -155,6 +160,10 @@ public class ServerComm extends Thread {
 	public void rollDice(int number)
 	{
 		this.sendMessage("move dice " + number);
+	}
+	public void placeRobber(int number)
+	{
+		this.sendMessage("move robber " + number);
 	}
 	
 	@Override

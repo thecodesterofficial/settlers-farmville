@@ -310,6 +310,8 @@ public class UserInterface extends JPanel {
         
 			 /*if(server && gameBoard.allPlayers.get(gameBoard.player).username == comm.getUsername())
 		        {*/
+		if(gameBoard.isCurrentPlayer(comm.getUsername()))
+		{
 		g2.setColor(Color.cyan);
 		g2.fill3DRect((int) (screenWidth * .2), (int) (screenHeight * .8), (int) (screenWidth * .2),
 				(int) (screenHeight * .2), true);
@@ -321,7 +323,8 @@ public class UserInterface extends JPanel {
 			g2.drawString("Bank", (int) (screenWidth * .22), (int) (screenHeight * .88));
 		else
 			g2.drawString("Map", (int) (screenWidth * .22), (int) (screenHeight * .88));
-
+		}
+		g2.setColor(Color.black);
 		if (gameBoard.currentRoll > 0)
 			g2.drawString(gameBoard.getCurrentPlayer().username + " rolls a " + gameBoard.currentRoll,
 					(int) (screenWidth * .5), (int) (screenHeight * .05));
@@ -456,6 +459,7 @@ public class UserInterface extends JPanel {
 
 							} else if (xClick > 0 && xClick < (int) (screenWidth * .2)
 									&& yClick > (int) (screenHeight * .8)) {
+								
 
 								if (buttonAction.equals("Place Settlement")) {
 									int settlementIndex = gameBoard.getSettlementIndex(selectedJoints);
@@ -475,17 +479,13 @@ public class UserInterface extends JPanel {
 									int robberIndex = gameBoard.getRobberIndex(selectedJoints);
 									if(gameBoard.placeRobber(robberIndex))
 									{
-									   // Communicate to server. (Asa)
+									   comm.placeRobber(robberIndex);
 									}
 									
 								} else {
 
 									if (gameBoard.nextTurn()) {
 										comm.nextTurn();
-										if(gameBoard.round > 2)
-										{
-											
-										}
 									} else {
 										JOptionPane.showMessageDialog(null,
 												"Make sure to place a settlement and a road!");
@@ -514,9 +514,11 @@ public class UserInterface extends JPanel {
 								if (buttonAction.equals("Trade With Bank")) {
 									gameBoard.tradeWithBank(playerCardSelect, cardSelect);
 									// TODO communicate with server.
+									seeMap = true;
 								} else {
 									gameBoard.nextTurn();
-									// TODO communicate with server.
+									// TODO communicate with server
+									seeMap = true;
 								}
 
 								emptyBank();

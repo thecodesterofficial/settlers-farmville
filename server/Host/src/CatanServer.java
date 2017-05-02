@@ -183,7 +183,14 @@ public class CatanServer extends Thread {
     		board.placeRobber(robberIndex);
     		ConnectionManager.instance().Dispatch("move robber " + robberIndex);
     	}
-    	
+    	else if(message[1].equals("trade"))
+    	{
+    		int playerCardSelect = Integer.parseInt(message[2]);
+    		int cardSelect = Integer.parseInt(message[3]);
+    		GameBoard board = CatanServerManager.instance().GetGameBoard();
+    		board.tradeWithBank(playerCardSelect, cardSelect);
+    		ConnectionManager.instance().Dispatch("move trade " + playerCardSelect + " " + cardSelect);    	
+    	}
     }
     public void close() {
         try {

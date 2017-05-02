@@ -513,11 +513,12 @@ public class UserInterface extends JPanel {
 
 								if (buttonAction.equals("Trade With Bank")) {
 									gameBoard.tradeWithBank(playerCardSelect, cardSelect);
-									// TODO communicate with server.
-									seeMap = true;
+									comm.tradeWithBank(playerCardSelect, cardSelect);
 								} else {
-									gameBoard.nextTurn();
-									// TODO communicate with server
+									if(gameBoard.nextTurn())
+									{
+										comm.nextTurn();
+									}
 									seeMap = true;
 								}
 

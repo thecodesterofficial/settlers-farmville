@@ -136,9 +136,18 @@ public class ServerComm extends Thread {
 				int robberIndex = Integer.parseInt(parts[2]);
 	    		game.placeRobber(robberIndex);
 			}
+			else if(parts[1].equals("trade"))
+			{
+				int playerCardSelect = Integer.parseInt(parts[2]);
+	    		int cardSelect = Integer.parseInt(parts[3]);
+	    		game.tradeWithBank(playerCardSelect, cardSelect);
+			}
 		}
 	}
-	
+	public void tradeWithBank(int playerCardSelect, int cardSelect)
+	{
+		sendMessage("move trade " + playerCardSelect + " " + cardSelect);
+	}
 	public void sendMessage(String message)
 	{
 		out.println(message);

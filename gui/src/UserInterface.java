@@ -453,7 +453,7 @@ public class UserInterface extends JPanel {
 						int xClick = mC.getX();
 						int yClick = mC.getY();
 
-						if (seeMap) {
+						if (seeMap && comm.getUsername().equals(gameBoard.getCurrentPlayer().username)) {
 
 							if (isJointSelected((1.0 * xClick) / screenWidth, (1.0 * yClick) / screenHeight)) {
 
@@ -504,7 +504,7 @@ public class UserInterface extends JPanel {
 
 							}
 
-						} else {
+						} else if(comm.getUsername().equals(gameBoard.getCurrentPlayer().username)){
 
 							double x = (1.0 * xClick) / screenWidth;
 							double y = (1.0 * yClick) / screenHeight;

@@ -43,7 +43,24 @@ public class GameBoard implements Serializable {
 		//	this.placeRobberOnSand();
 		}
 		rand = new Random();
-		rob = new Robber(8);
+		int max = 18;
+		int min = 0;
+		int robLocation = rand.nextInt(max - min + 1) + min;
+		rob = new Robber(robLocation);
+		Hex robHex = allHexes.get(robLocation);
+		Hex sandHex = new Hex();
+		
+		for(int i = 0; i < allHexes.size(); i++)
+		{
+			if(allHexes.get(i).hexType == HexType.SAND)
+			{
+				sandHex = allHexes.get(i);
+				break;
+			}
+		}
+		sandHex.hexType = robHex.hexType;
+		robHex.number = 7;
+		robHex.hexType = HexType.SAND;
 
 	}
 
